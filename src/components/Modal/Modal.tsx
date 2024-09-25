@@ -1,16 +1,9 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
-import SwiperReact from "../SwiperReact/SwiperReact";
-import {
-  Close,
-  Container,
-  Content,
-  Header,
-  Image,
-  Infos,
-  ModalContainer,
-  Rooms,
-} from "./styles";
+import SwiperReact from "../SwiperReact";
+import * as S from "./styles";
+import imoveis from "../../mocks/imoveis";
+import { Property } from "../../@types";
 
 export type ModalProps = {
   closeModal?: () => void;
@@ -18,41 +11,51 @@ export type ModalProps = {
 
 const Modal: React.FC<ModalProps> = ({ closeModal }) => {
   return (
-    <ModalContainer>
-      <Container>
-        <Header>
-          <h1>Titulo</h1>
-          <Close onClick={closeModal} />
-        </Header>
+    <S.ModalContainer>
+      {imoveis.map((property: Property) => (
+        <S.Container>
+          <S.Header>
+            <S.Close onClick={closeModal} />
+          </S.Header>
 
-        <Content>
-          <Rooms>
-            <SwiperReact>
-              <SwiperSlide>
-                <Image
-                  src="https://s2.glbimg.com/NO1Mrkp3Z96htIx8_RhrdHTux0w=/e.glbimg.com/og/ed/f/original/2018/03/08/decoracao-de-quarto-cabeceira-suede-rosa-roupa-de-cama-branco-com-rosa-papel-de-parede-florido-romantico-abajur-e-pendente-brancoarquiteta-leticia-arcangeli.jpg"
-                  alt="Quarto decorado com cabeceira de suede rosa"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <Image
-                  src="https://media-magazine.trivago.com/wp-content/uploads/2021/03/22003154/pousadas-com-hidro-vista-panormica-sp-santo-antonio-do-pinhal-brasil-pousada-quinta-dos-pinhais-hidromassagem-.jpg"
-                  alt="Pousada com hidro e vista panorâmica"
-                />
-              </SwiperSlide>
-            </SwiperReact>
-          </Rooms>
+          <S.Content>
+            <S.Rooms>
+              <SwiperReact>
+                {property?.img?.map((img) => (
+                  <SwiperSlide key={img?.pic}>
+                    <S.Image src={img?.pic} alt="image" />
+                  </SwiperSlide>
+                ))}
+              </SwiperReact>
+            </S.Rooms>
 
-          <Infos>
-            <p>descrição</p>
-            <p>quartos</p>
-            <p>garagem</p>
-            <p>localização</p>
-            <p>Preço</p>
-          </Infos>
-        </Content>
-      </Container>
-    </ModalContainer>
+            <S.Infos>
+              <h1>{property?.title}</h1>
+              <S.Description>
+                <S.Text>Descrição:</S.Text>{" "}
+                <S.TextDescription>{property?.description}</S.TextDescription>
+              </S.Description>
+              <S.Description>
+                <S.Text>Quartos:</S.Text>
+                <S.TextDescription>{property?.room}</S.TextDescription>
+              </S.Description>
+              <S.Description>
+                <S.Text>Garagem:</S.Text>
+                <S.TextDescription>{property?.garage}</S.TextDescription>
+              </S.Description>
+              <S.Description>
+                <S.Text>Localização:</S.Text>
+                <S.TextDescription>{property?.adress}</S.TextDescription>
+              </S.Description>
+              <S.Description>
+                <S.Text>Preço:</S.Text>
+                <S.TextDescription>{property?.price}</S.TextDescription>
+              </S.Description>
+            </S.Infos>
+          </S.Content>
+        </S.Container>
+      ))}
+    </S.ModalContainer>
   );
 };
 

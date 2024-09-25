@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import "@fontsource/manrope";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -34,6 +35,10 @@ const GlobalStyle = createGlobalStyle`
 
   textarea {
     resize: none;
+  }
+
+  p, h1, h2, h3,h4,h5,h6 {
+        font-family: 'Manrope', sans-serif;
   }
 `;
 
