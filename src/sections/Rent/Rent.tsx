@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { background } from "../../assets";
 import { CardInfo, Modal } from "../../components";
 import { Cards, Container } from "./styles";
+import imoveis from "../../mocks/imoveis";
+import { DescriptionProperty } from "../../@types";
 
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [selectedPropertie, setSelectedPropertie] =
+    useState<DescriptionProperty>();
 
   useEffect(() => {
     if (openModal) {
@@ -15,14 +18,30 @@ const Rent: React.FC = () => {
     }
   }, [openModal]);
 
+  const handleModal = (propertie: DescriptionProperty) => {
+    setOpenModal(true);
+    setSelectedPropertie(propertie);
+  };
+
   return (
     <Container>
       <h1>Imóveis adicionados recentemente</h1>
 
       <Cards>
-        <CardInfo Img={background} onClick={() => setOpenModal(true)} />
+        {imoveis?.map((propertie, idx) => (
+          <CardInfo
+            key={idx}
+            {...propertie}
+            onClick={() => handleModal(propertie?.descriptionProperty)}
+          />
+        ))}
       </Cards>
-      {openModal && <Modal closeModal={() => setOpenModal(false)} />}
+      {openModal && (
+        <Modal
+          propertie={selectedPropertie}
+          closeModal={() => setOpenModal(false)}
+        />
+      )}
     </Container>
   );
 };

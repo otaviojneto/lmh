@@ -21,10 +21,6 @@ export const Card = styled.div`
       margin-bottom: 2px;
       font-weight: 400;
     }
-
-    p {
-      margin-bottom: 6px;
-    }
   }
 `;
 
@@ -33,7 +29,14 @@ export const Base = styled.div`
 `;
 
 export const Info = styled.div`
+  display: grid;
+  gap: 3px;
   padding: 4px;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+  }
 `;
 
 export const Image = styled.img`

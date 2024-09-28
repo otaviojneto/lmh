@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import { InputText } from "../../components";
+import { Button, InputText } from "../../components";
 
 const FormAdvertise: React.FC = () => {
   const [name, setName] = useState<string>();
@@ -22,8 +22,12 @@ const FormAdvertise: React.FC = () => {
           value={phone}
           onChange={() => setPhone}
         />
+        <S.ContainerButton>
+          <Button type="submit" variant="outline">
+            Enviar
+          </Button>
+        </S.ContainerButton>
       </S.Form>
-      <button type="submit">botão </button>
     </S.Container>
   );
 };

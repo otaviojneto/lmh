@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import theme from '../../styles/colors';
-import { background } from '../../assets';
+import styled from "styled-components";
+import theme from "../../styles/colors";
+import { background } from "../../assets";
 
 export const Container = styled.div`
-  height: 400px;
+  height: 403px;
   overflow: hidden;
   top: -1px;
   width: 100%;
@@ -23,7 +23,7 @@ export const Content = styled.div`
 
   &::before {
     background-color: ${theme.colors.white};
-    content: '';
+    content: "";
     height: 100%;
     opacity: 0.2;
     position: absolute;
@@ -33,7 +33,7 @@ export const Content = styled.div`
   &::after {
     background-color: ${theme.colors.bgColor};
     bottom: -36px;
-    content: '';
+    content: "";
     height: 86px;
     left: 0px;
     transform: rotate(-3deg);

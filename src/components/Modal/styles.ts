@@ -39,17 +39,10 @@ export const Header = styled.div`
   justify-content: flex-end;
 `;
 
-export const Close = styled.button`
-  background-color: transparent;
-  background-image: url(${IcClose});
+export const Close = styled.img`
+  cursor: pointer;
   height: 24px;
-  transition: ease-in-out 0.3s;
   width: 24px;
-
-  &:hover,
-  &:active {
-    background-image: url(${IcCloseGrey});
-  }
 `;
 
 export const Content = styled.div``;

@@ -1,4 +1,8 @@
 export type Property = {
+  descriptionProperty: DescriptionProperty;
+};
+
+export type DescriptionProperty = {
   title: string;
   description: string;
   room: number;
@@ -11,3 +15,16 @@ export type Property = {
 export type Pic = {
   pic: string;
 };
+
+export type CardProperty = {
+  img: string;
+  m?: number | undefined;
+  city: string;
+  garage: string;
+  numberRooms: number;
+  neighborhood: string;
+  value: string;
+  typePropertie: string;
+};
+
+export type FullProperty = CardProperty & Property;
