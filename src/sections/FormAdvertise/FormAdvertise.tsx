@@ -1,20 +1,21 @@
 import React from "react";
-import * as S from "./styles";
 import { Button, InputText } from "../../components";
+import * as S from "./styles";
 
 const FormAdvertise: React.FC = () => {
   return (
     <S.Container>
       <h2>Anuncie conosco</h2>
 
-      <S.Form
-        action="https://formsubmit.co/lmh.consultoria@yahoo.com"
-        method="POST"
-      >
-        <input type="hidden" name="_next" value="https://lmhconsultoria.com" />
-        <InputText labelName="Nome" name="name" />
-        <InputText labelName="Email" name="email" type="email" />
-        <InputText type="tel" labelName="Celular" name="phone" />
+      <S.Form action="https://submit-form.com/bQCIroJLk" method="POST">
+        <input
+          type="hidden"
+          name="_redirect"
+          value="https://lmhconsultoria.com"
+        />
+        <InputText labelName="Nome" name="name" required />
+        <InputText labelName="Email" name="email" type="email" required />
+        <InputText type="tel" labelName="Celular" name="phone" required />
         <S.ContainerButton>
           <Button type="submit" variant="outline">
             Enviar
