@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { IcClose, IcCloseGrey } from "../../icons";
 import theme from "../../styles/colors";
 
 export const Button = styled.button`
