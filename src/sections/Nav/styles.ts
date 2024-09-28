@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { IcBrand } from '../../icons';
-import theme from '../../styles/colors';
+import styled from "styled-components";
+import { IcBrand } from "../../icons";
+import theme from "../../styles/colors";
 
 export type OpenProps = {
   isOpen?: boolean;
@@ -12,14 +12,14 @@ export const Container = styled.div`
   box-shadow: 0 -11px 21px 0;
   display: flex;
   justify-content: space-between;
-  padding: 15px 10%;
+  padding: 15px 5%;
   position: relative;
 `;
 
 export const Menu = styled.div<OpenProps>`
   background: inherit;
-  display: ${({ isOpen }) => (isOpen ? 'flex' : '')};
-  height: ${({ isOpen }) => (isOpen ? 'calc(100vh - 70px)' : 0)};
+  display: ${({ isOpen }) => (isOpen ? "flex" : "")};
+  height: ${({ isOpen }) => (isOpen ? "calc(100vh - 70px)" : 0)};
   justify-content: center;
   overflow: hidden;
   position: absolute;
@@ -27,7 +27,7 @@ export const Menu = styled.div<OpenProps>`
   text-align: center;
   transition: ease-in-out 0.5s;
   top: 70px;
-  width: ${({ isOpen }) => (isOpen ? '100%' : 0)};
+  width: ${({ isOpen }) => (isOpen ? "100%" : 0)};
   z-index: 2;
 
   ul {
@@ -35,7 +35,6 @@ export const Menu = styled.div<OpenProps>`
     width: 100%;
 
     li {
-      border-top: 1px solid ${theme.colors.grey2};
       padding: 8px;
       width: 100%;
 

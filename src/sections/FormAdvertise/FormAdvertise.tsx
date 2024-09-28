@@ -1,27 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./styles";
 import { Button, InputText } from "../../components";
 
 const FormAdvertise: React.FC = () => {
-  const [name, setName] = useState<string>();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
   return (
     <S.Container>
-      <h2>Anuncie conosco </h2>
+      <h2>Anuncie conosco</h2>
 
       <S.Form
-        action="https://formsubmit.co/otaviojnetoo@gmail.com"
+        action="https://formsubmit.co/lmh.consultoria@yahoo.com"
         method="POST"
       >
-        <InputText labelName="Nome" value={name} onChange={() => setName} />
-        <InputText labelName="Email" value={email} onChange={() => setEmail} />
-        <InputText
-          type="tel"
-          labelName="Celular"
-          value={phone}
-          onChange={() => setPhone}
-        />
+        <input type="hidden" name="_next" value="https://lmhconsultoria.com" />
+        <InputText labelName="Nome" name="name" />
+        <InputText labelName="Email" name="email" type="email" />
+        <InputText type="tel" labelName="Celular" name="phone" />
         <S.ContainerButton>
           <Button type="submit" variant="outline">
             Enviar
