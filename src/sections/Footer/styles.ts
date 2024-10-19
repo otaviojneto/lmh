@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '../../styles/colors';
+import styled from "styled-components";
+import theme from "../../styles/colors";
 
 export const Container = styled.div`
   background-color: ${theme.colors.grey5};
@@ -15,6 +15,24 @@ export const Container = styled.div`
       color: ${theme.colors.secondary};
     }
   }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    align-items: center;
+    display: grid;
+    gap: 16px;
+  }
+`;
+
+export const WhatsBase = styled.div`
+  @media (max-width: ${theme.breakpoints.sm}) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const Contact = styled.div`
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 export const Whats = styled.div`
@@ -24,4 +42,8 @@ export const Whats = styled.div`
   img {
     margin-right: 10px;
   }
+`;
+
+export const Text = styled.p`
+  font-weight: 500;
 `;

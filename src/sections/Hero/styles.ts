@@ -3,7 +3,7 @@ import theme from "../../styles/colors";
 import { background } from "../../assets";
 
 export const Container = styled.div`
-  height: 403px;
+  height: 400px;
   overflow: hidden;
   top: -1px;
   width: 100%;

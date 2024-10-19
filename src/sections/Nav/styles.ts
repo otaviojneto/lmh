@@ -3,7 +3,7 @@ import { IcBrand } from "../../icons";
 import theme from "../../styles/colors";
 
 export type OpenProps = {
-  isOpen?: boolean;
+  $isOpen?: boolean;
 };
 
 export const Container = styled.div`
@@ -18,8 +18,8 @@ export const Container = styled.div`
 
 export const Menu = styled.div<OpenProps>`
   background: inherit;
-  display: ${({ isOpen }) => (isOpen ? "flex" : "")};
-  height: ${({ isOpen }) => (isOpen ? "calc(100vh - 70px)" : 0)};
+  display: ${({ $isOpen }) => ($isOpen ? "flex" : "")};
+  height: ${({ $isOpen }) => ($isOpen ? "calc(100vh - 70px)" : 0)};
   justify-content: center;
   overflow: hidden;
   position: absolute;
@@ -27,10 +27,11 @@ export const Menu = styled.div<OpenProps>`
   text-align: center;
   transition: ease-in-out 0.5s;
   top: 70px;
-  width: ${({ isOpen }) => (isOpen ? "100%" : 0)};
+  width: ${({ $isOpen }) => ($isOpen ? "100%" : 0)};
   z-index: 2;
 
   ul {
+    padding-top: 10px;
     transition: ease-in-out 0.4s;
     width: 100%;
 
@@ -40,6 +41,7 @@ export const Menu = styled.div<OpenProps>`
 
       a {
         color: ${theme.colors.secondary};
+        font-size: 18px;
         font-weight: 700;
         padding: 9px 140px;
         width: 100%;
@@ -70,6 +72,7 @@ export const Menu = styled.div<OpenProps>`
         a {
           border-bottom: 1px solid transparent;
           color: ${theme.colors.secondary};
+          font-size: 14px;
           font-weight: 700;
           padding: 5px;
           transition: ease-in-out 0.4s;

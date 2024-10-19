@@ -1,9 +1,9 @@
 import React from "react";
-import { Container } from "./styles";
+import * as S from "./styles";
 
 const Abaut: React.FC = () => {
   return (
-    <Container>
+    <S.Container>
       <h1>Um pouco sobre nós</h1>
 
       <p>
@@ -11,7 +11,7 @@ const Abaut: React.FC = () => {
         na área de locação, compra e venda de imóveis, análise de documentos,
         confecção de contratos e vistorias e assessoria juridica e imobiliária.
       </p>
-    </Container>
+    </S.Container>
   );
 };
 

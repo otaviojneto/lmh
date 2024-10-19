@@ -5,7 +5,7 @@ export const Card = styled.div`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  width: 230px;
+  width: 280px;
 
   button {
     background-color: ${theme.colors.white};
@@ -31,17 +31,19 @@ export const Base = styled.div`
 export const Info = styled.div`
   display: grid;
   gap: 3px;
+  min-height: 100px;
   padding: 4px;
 
   h2 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
   }
 `;
 
 export const Image = styled.img`
   border-radius: 4px 4px 0 0;
-  height: 180px;
+  height: 200px;
+  object-fit: cover;
   width: 100%;
 `;
 
