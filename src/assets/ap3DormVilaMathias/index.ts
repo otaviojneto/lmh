@@ -1,0 +1,11 @@
+export { default as img1vm } from "./img1vm.jpeg";
+export { default as img2vm } from "./img2vm.jpeg";
+export { default as img3vm } from "./img3vm.jpeg";
+export { default as img4vm } from "./img4vm.jpeg";
+export { default as img5vm } from "./img5vm.jpeg";
+export { default as img6vm } from "./img6vm.jpeg";
+export { default as img7vm } from "./img7vm.jpeg";
+export { default as img8vm } from "./img8vm.jpeg";
+export { default as img9vm } from "./img9vm.jpeg";
+export { default as img10vm } from "./img10vm.jpeg";
+export { default as img11vm } from "./img11vm.jpeg";

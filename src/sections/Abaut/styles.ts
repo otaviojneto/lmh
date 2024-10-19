@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '../../styles/colors';
+import styled from "styled-components";
+import theme from "../../styles/colors";
 
 export const Container = styled.div`
   background-color: ${theme.colors.grey1};
@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   &::before {
     background-color: ${theme.colors.bgColor};
-    content: '';
+    content: "";
     height: 60px;
     left: 0px;
     top: -32px;
@@ -22,6 +22,7 @@ export const Container = styled.div`
   }
 
   h1 {
+    line-height: 42px;
     margin-bottom: 20px;
   }
 

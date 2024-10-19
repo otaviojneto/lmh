@@ -1,6 +1,6 @@
 import React from "react";
 import { IcBedroom, IcGarage, IcRuler } from "../../icons";
-import { Base, Card, Footer, Image, Info } from "./styles";
+import * as S from "./styles";
 import { CardProperty } from "../../@types/types";
 
 export type CardInfoProps = CardProperty & {
@@ -19,12 +19,12 @@ const CardInfo: React.FC<CardInfoProps> = ({
   numberRooms,
 }) => {
   return (
-    <Card>
+    <S.Card>
       <button type="button" onClick={onClick}>
-        <Image src={img} />
+        <S.Image src={img} />
 
-        <Base>
-          <Info>
+        <S.Base>
+          <S.Info>
             <h2>{typePropertie}</h2>
 
             <p>
@@ -32,9 +32,9 @@ const CardInfo: React.FC<CardInfoProps> = ({
             </p>
 
             <h4>valor: {value}</h4>
-          </Info>
+          </S.Info>
 
-          <Footer>
+          <S.Footer>
             {m !== undefined && m > 0 && (
               <div>
                 <img src={IcRuler} alt="img" />
@@ -54,10 +54,10 @@ const CardInfo: React.FC<CardInfoProps> = ({
               <p>Garagem</p>
               <h5>{garage}</h5>
             </div>
-          </Footer>
-        </Base>
+          </S.Footer>
+        </S.Base>
       </button>
-    </Card>
+    </S.Card>
   );
 };
 

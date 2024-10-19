@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 80px 10%;
@@ -14,9 +14,8 @@ export const Container = styled.div`
 
 export const Cards = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 40px 0;
+  gap: 40px 32px;
 
   @media (max-width: 874px) {
     justify-content: center;

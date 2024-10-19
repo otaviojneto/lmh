@@ -47,11 +47,14 @@ export const Close = styled.img`
 export const Content = styled.div``;
 
 export const Rooms = styled.div`
-  padding: 20px;
+  padding: 0 20px 20px;
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    padding: 20px;
+  }
 `;
 
 export const Image = styled.img`
-  max-height: 420px;
   object-fit: cover;
   max-width: 100%;
 `;

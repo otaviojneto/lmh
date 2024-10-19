@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CardInfo, Modal } from "../../components";
-import { Cards, Container } from "./styles";
+import * as S from "./styles";
 import imoveis from "../../mocks/imoveis";
 import { DescriptionProperty } from "../../@types";
 
@@ -24,10 +24,10 @@ const Rent: React.FC = () => {
   };
 
   return (
-    <Container>
+    <S.Container>
       <h1>Imóveis adicionados recentemente</h1>
 
-      <Cards>
+      <S.Cards>
         {imoveis?.map((propertie, idx) => (
           <CardInfo
             key={idx}
@@ -35,14 +35,14 @@ const Rent: React.FC = () => {
             onClick={() => handleModal(propertie?.descriptionProperty)}
           />
         ))}
-      </Cards>
+      </S.Cards>
       {openModal && (
         <Modal
           propertie={selectedPropertie}
           closeModal={() => setOpenModal(false)}
         />
       )}
-    </Container>
+    </S.Container>
   );
 };
 
