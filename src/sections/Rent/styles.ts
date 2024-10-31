@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 32px;
+  gap: 40px 20px;
 
   @media (max-width: 874px) {
     justify-content: center;

@@ -71,3 +71,7 @@ export const Footer = styled.div`
     }
   }
 `;
+
+export const BaseButton = styled.div`
+  padding: 0 8px 10px;
+`;

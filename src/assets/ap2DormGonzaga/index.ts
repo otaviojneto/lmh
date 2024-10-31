@@ -1,0 +1,13 @@
+export { default as img1g } from "./img1g.jpeg";
+export { default as img2g } from "./img2g.jpeg";
+export { default as img3g } from "./img3g.jpeg";
+export { default as img4g } from "./img4g.jpeg";
+export { default as img5g } from "./img5g.jpeg";
+export { default as img6g } from "./img6g.jpeg";
+export { default as img7g } from "./img7g.jpeg";
+export { default as img8g } from "./img8g.jpeg";
+export { default as img9g } from "./img9g.jpeg";
+export { default as img10g } from "./img10g.jpeg";
+export { default as img11g } from "./img11g.jpeg";
+export { default as img12g } from "./img12g.jpeg";
+export { default as img13g } from "./img13g.jpeg";

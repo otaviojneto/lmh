@@ -2,6 +2,7 @@ import React from "react";
 import { IcBedroom, IcGarage, IcRuler } from "../../icons";
 import * as S from "./styles";
 import { CardProperty } from "../../@types/types";
+import Button from "../Button";
 
 export type CardInfoProps = CardProperty & {
   onClick?: () => void;
@@ -56,6 +57,10 @@ const CardInfo: React.FC<CardInfoProps> = ({
             </div>
           </S.Footer>
         </S.Base>
+
+        <S.BaseButton>
+          <Button variant="outline">Ver Imóvel</Button>
+        </S.BaseButton>
       </button>
     </S.Card>
   );
