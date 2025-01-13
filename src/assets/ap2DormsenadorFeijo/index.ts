@@ -1,9 +1,0 @@
-export { default as img1s } from "./img1s.jpeg";
-export { default as img2s } from "./img2s.jpeg";
-export { default as img3s } from "./img3s.jpeg";
-export { default as img4s } from "./img4s.jpeg";
-export { default as img5s } from "./img5s.jpeg";
-export { default as img6s } from "./img6s.jpeg";
-export { default as img7s } from "./img7s.jpeg";
-export { default as img8s } from "./img8s.jpeg";
-export { default as img9s } from "./img9s.jpeg";

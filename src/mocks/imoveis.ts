@@ -12,17 +12,6 @@ import {
   img9,
 } from "../assets/salaLivingC1";
 import {
-  img1s,
-  img2s,
-  img3s,
-  img4s,
-  img5s,
-  img6s,
-  img7s,
-  img8s,
-  img9s,
-} from "../assets/ap2DormsenadorFeijo";
-import {
   img1c,
   img2c,
   img3c,
