@@ -97,37 +97,6 @@ const imoveis: FullProperty[] = [
     },
   },
   {
-    typePropertie: "Apto 2 dorms - Av Senador Feijo/Santos",
-    img: img6s,
-    numberRooms: 2,
-    city: "Santos",
-    garage: "não",
-    neighborhood: "Vila Mathias (próx. Centro)",
-    value: "R$ 1.350,00 + despesas",
-    descriptionProperty: {
-      title: "Apto 2 dorms - Av Senador Feijo/Santos",
-      description:
-        "Apartamento de 2 dormitórios, com sala, cozinha, área de serviço e WC. O apartamento está com pintura nova na cor branca e todo em piso frio. 2º andar. Prédio de 2 andares. Não tem garagem. Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
-      room: 2,
-      garage: "Não",
-      adress:
-        "Av. Senador Feijó, nº 284 - Vila Mathias - Santos/SP (próximo ao Centro de Santos).",
-      price:
-        "R$ 1.350,00 o pacote (Aluguel + IPTU).À parte, será cobrado a conta de luz do corredor (rateada com o outro apartamento), a água (rateada com o outro apartamento e a loja de colchões) e a luz do apartamento (consumo individual).",
-      img: [
-        { pic: img1s },
-        { pic: img2s },
-        { pic: img3s },
-        { pic: img4s },
-        { pic: img5s },
-        { pic: img6s },
-        { pic: img7s },
-        { pic: img8s },
-        { pic: img9s },
-      ],
-    },
-  },
-  {
     typePropertie: "Apto 2 dorms - CENTRO/Santos",
     img: img5c,
     numberRooms: 2,
