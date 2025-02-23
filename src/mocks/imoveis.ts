@@ -1,16 +1,16 @@
 import { FullProperty } from "../@types";
-import {
-  img1,
-  img10,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-  img7,
-  img8,
-  img9,
-} from "../assets/salaLivingC1";
+// import {
+//   img1,
+//   img10,
+//   img2,
+//   img3,
+//   img4,
+//   img5,
+//   img6,
+//   img7,
+//   img8,
+//   img9,
+// } from "../assets/salaLivingC1";
 import {
   img1c,
   img2c,
@@ -37,54 +37,40 @@ import {
   img10vm,
   img11vm,
 } from "../assets/ap3DormVilaMathias";
-import {
-  img1g,
-  img2g,
-  img3g,
-  img4g,
-  img5g,
-  img6g,
-  img7g,
-  img8g,
-  img9g,
-  img10g,
-  img11g,
-  img12g,
-  img13g,
-} from "../assets/ap2DormGonzaga";
+
 const imoveis: FullProperty[] = [
-  {
-    typePropertie: "Sala Living - Jose Menino/Santos ",
-    img: img1,
-    numberRooms: 1,
-    city: "Santos",
-    garage: "sim",
-    neighborhood: "Jose Menino",
-    value: "R$ 1.400,00",
-    descriptionProperty: {
-      title: "Sala living - 1 quadra da praia - Jose Menino/Santos (divisa)",
-      description:
-        "Apartamento tipo sala living (quarto, banheiro e cozinha). Não tem sala. O apartamento está com pintura nova na cor branca e possui piso frio. Bem arejado. 8º andar. Prédio com elevador e portaria 24 horas. Garagem coletiva para poucos veículos. Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
-      room: 1,
-      garage: "Sim (garagem coletiva, insuficiente para todos os apartamentos)",
-      adress:
-        "Rua Pedro Borges Gonçalves - José Menino - Santos/SP (1 quadra e meia da praia, próximo ao Habibs).",
-      price:
-        "R$ 1.400,00 o pacote (Aluguel + IPTU + Condomínio + água).À parte, apenas a conta de luz, de acordo com o consumo.",
-      img: [
-        { pic: img1 },
-        { pic: img2 },
-        { pic: img3 },
-        { pic: img4 },
-        { pic: img5 },
-        { pic: img6 },
-        { pic: img7 },
-        { pic: img8 },
-        { pic: img9 },
-        { pic: img10 },
-      ],
-    },
-  },
+  // {
+  //   typePropertie: "Sala Living - Jose Menino/Santos ",
+  //   img: img1,
+  //   numberRooms: 1,
+  //   city: "Santos",
+  //   garage: "sim",
+  //   neighborhood: "Jose Menino",
+  //   value: "R$ 1.400,00",
+  //   descriptionProperty: {
+  //     title: "Sala living - 1 quadra da praia - Jose Menino/Santos (divisa)",
+  //     description:
+  //       "Apartamento tipo sala living (quarto, banheiro e cozinha). Não tem sala. O apartamento está com pintura nova na cor branca e possui piso frio. Bem arejado. 8º andar. Prédio com elevador e portaria 24 horas. Garagem coletiva para poucos veículos. Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
+  //     room: 1,
+  //     garage: "Sim (garagem coletiva, insuficiente para todos os apartamentos)",
+  //     adress:
+  //       "Rua Pedro Borges Gonçalves - José Menino - Santos/SP (1 quadra e meia da praia, próximo ao Habibs).",
+  //     price:
+  //       "R$ 1.400,00 o pacote (Aluguel + IPTU + Condomínio + água).À parte, apenas a conta de luz, de acordo com o consumo.",
+  //     img: [
+  //       { pic: img1 },
+  //       { pic: img2 },
+  //       { pic: img3 },
+  //       { pic: img4 },
+  //       { pic: img5 },
+  //       { pic: img6 },
+  //       { pic: img7 },
+  //       { pic: img8 },
+  //       { pic: img9 },
+  //       { pic: img10 },
+  //     ],
+  //   },
+  // },
   {
     typePropertie: "Apto 2 dorms - CENTRO/Santos",
     img: img5c,
@@ -146,41 +132,6 @@ const imoveis: FullProperty[] = [
         { pic: img9vm },
         { pic: img10vm },
         { pic: img11vm },
-      ],
-    },
-  },
-  {
-    typePropertie: "Apto 2 dorms - Gonzaga/Santos",
-    img: img1g,
-    numberRooms: 2,
-    city: "Santos",
-    garage: "sim",
-    neighborhood: "Gonzaga",
-    value: "R$ 2.200,00",
-    descriptionProperty: {
-      title: "Apto 2 dorms - Gonzaga/Santos",
-      description:
-        "Apartamento de 2 dormitórios, com sala, cozinha, área de serviço e WC. O apartamento está com pintura nova na cor branca e todo em piso frio. Excelente localização: Gonzaga, próximo ao Hipermercado Assaí e Shopping Miramar. Bem arejado. 1º andar. Prédio de 3 andares. Garagem coletiva (insuficiente para todos os apartamentos). Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
-      room: 2,
-      garage: "Sim (garagem coletiva, insuficiente para todos os apartamentos)",
-      adress:
-        "Rua Manoel Vitorino, nº 34 - Gonzaga - Santos/SP (próximo ao shopping Miramar).",
-      price:
-        "R$ 2.200,00 o pacote (Aluguel + IPTU + Condomínio + Água).À parte, apenas a conta de luz, de acordo com o consumo.",
-      img: [
-        { pic: img1g },
-        { pic: img2g },
-        { pic: img3g },
-        { pic: img4g },
-        { pic: img5g },
-        { pic: img6g },
-        { pic: img8g },
-        { pic: img9g },
-        { pic: img7g },
-        { pic: img10g },
-        { pic: img11g },
-        { pic: img13g },
-        { pic: img12g },
       ],
     },
   },
