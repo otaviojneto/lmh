@@ -1,0 +1,11 @@
+export { default as img_pt01 } from "./img_pt01.jpg";
+export { default as img_pt02 } from "./img_pt02.jpg";
+export { default as img_pt03 } from "./img_pt03.jpg";
+export { default as img_pt04 } from "./img_pt04.jpg";
+export { default as img_pt05 } from "./img_pt05.jpg";
+export { default as img_pt06 } from "./img_pt06.jpg";
+export { default as img_pt07 } from "./img_pt07.jpg";
+export { default as img_pt08 } from "./img_pt08.jpg";
+export { default as img_pt09 } from "./img_pt09.jpg";
+export { default as img_pt10 } from "./img_pt10.jpg";
+export { default as img_pt11 } from "./img_pt11.jpg";

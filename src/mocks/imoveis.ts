@@ -1,16 +1,17 @@
 import { FullProperty } from "../@types";
-// import {
-//   img1,
-//   img10,
-//   img2,
-//   img3,
-//   img4,
-//   img5,
-//   img6,
-//   img7,
-//   img8,
-//   img9,
-// } from "../assets/salaLivingC1";
+import {
+  img_pt01,
+  img_pt10,
+  img_pt11,
+  img_pt02,
+  img_pt03,
+  img_pt04,
+  img_pt05,
+  img_pt06,
+  img_pt07,
+  img_pt08,
+  img_pt09,
+} from "../assets/ap1DormPontaDaPraia";
 import {
   img1c,
   img2c,
@@ -39,38 +40,37 @@ import {
 } from "../assets/ap3DormVilaMathias";
 
 const imoveis: FullProperty[] = [
-  // {
-  //   typePropertie: "Sala Living - Jose Menino/Santos ",
-  //   img: img1,
-  //   numberRooms: 1,
-  //   city: "Santos",
-  //   garage: "sim",
-  //   neighborhood: "Jose Menino",
-  //   value: "R$ 1.400,00",
-  //   descriptionProperty: {
-  //     title: "Sala living - 1 quadra da praia - Jose Menino/Santos (divisa)",
-  //     description:
-  //       "Apartamento tipo sala living (quarto, banheiro e cozinha). Não tem sala. O apartamento está com pintura nova na cor branca e possui piso frio. Bem arejado. 8º andar. Prédio com elevador e portaria 24 horas. Garagem coletiva para poucos veículos. Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
-  //     room: 1,
-  //     garage: "Sim (garagem coletiva, insuficiente para todos os apartamentos)",
-  //     adress:
-  //       "Rua Pedro Borges Gonçalves - José Menino - Santos/SP (1 quadra e meia da praia, próximo ao Habibs).",
-  //     price:
-  //       "R$ 1.400,00 o pacote (Aluguel + IPTU + Condomínio + água).À parte, apenas a conta de luz, de acordo com o consumo.",
-  //     img: [
-  //       { pic: img1 },
-  //       { pic: img2 },
-  //       { pic: img3 },
-  //       { pic: img4 },
-  //       { pic: img5 },
-  //       { pic: img6 },
-  //       { pic: img7 },
-  //       { pic: img8 },
-  //       { pic: img9 },
-  //       { pic: img10 },
-  //     ],
-  //   },
-  // },
+  {
+    typePropertie: "Apto de 1 dorm -  Ponta da Praia/Santos ",
+    img: img_pt01,
+    numberRooms: 1,
+    city: "Santos",
+    garage: "sim",
+    neighborhood: "Ponta da Praia",
+    value: "R$ 3.100,00 (Pacote)",
+    descriptionProperty: {
+      title: "Apto de 1 dorm espaçoso -  Ponta da Praia  c/ garagem e piscina",
+      description:
+        "Excelente apto de 1 dormitório, bem espaçoso. Sala para 2 ambientes com sacada, cozinha, área de serviço, quarto com sacada e ventilador de teto, WC bom box de vidro, corredor com armário embutido. É bem ventilado e fresco. Piso frio em todo o apartamento, todo com pintura nova. Opção de gás encanado. Prédio com elevador. Portaria 24 horas. Prédio com PISCINA para os moradores.",
+      room: 1,
+      garage: "Sim (para 1 veículo)",
+      adress: "Rua Maria Máximo, 672 - Ponta da Praia - Santos/SP",
+      price: "Pacote R$ 3.100,00 (aluguel + condom + IPTU).",
+      img: [
+        { pic: img_pt01 },
+        { pic: img_pt02 },
+        { pic: img_pt03 },
+        { pic: img_pt04 },
+        { pic: img_pt05 },
+        { pic: img_pt06 },
+        { pic: img_pt07 },
+        { pic: img_pt08 },
+        { pic: img_pt09 },
+        { pic: img_pt10 },
+        { pic: img_pt11 },
+      ],
+    },
+  },
   {
     typePropertie: "Apto 2 dorms - CENTRO/Santos",
     img: img5c,
