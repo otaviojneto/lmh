@@ -41,13 +41,13 @@ import {
 
 const imoveis: FullProperty[] = [
   {
-    typePropertie: "Apto de 1 dorm -  Ponta da Praia/Santos ",
+    typePropertie: "Apto de 1 dorm -  Ponta da Praia/Santos",
     img: img_pt01,
     numberRooms: 1,
     city: "Santos",
     garage: "sim",
     neighborhood: "Ponta da Praia",
-    value: "R$ 3.100,00 (Pacote)",
+    value: "R$ 3.000,00 (Pacote)",
     descriptionProperty: {
       title: "Apto de 1 dorm espaçoso -  Ponta da Praia  c/ garagem e piscina",
       description:
@@ -112,14 +112,14 @@ const imoveis: FullProperty[] = [
     neighborhood: "Vila Mathias",
     value: "R$ 1.900,00 (pacote)",
     descriptionProperty: {
-      title: "Apto 2 dorms - Conselheiro Nebias - Vila Mathias/Santos",
+      title: "Apto 3 dorms - Conselheiro Nebias - Vila Mathias/Santos",
       description:
         "Apartamento de 3 dormitórios, com sala, cozinha, área de serviço e WC. O apartamento está com pintura nova na cor branca. Os quartos e cozinha são em piso frio e sala em piso de tacos de madeira em excelente estado. Prédio de 3 andares. Não tem garagem. Garantia: depósito caução de 3 meses. Contrato de locação residencial de 30 meses (não alugamos para temporada). Será realizada pesquisa em nome dos moradores.",
       room: 3,
       garage: "Não",
       adress:
         "Av Conselheiro Nebias, 215 - Vila Mathias - Santos/SP (próximo à Rua Bitencourt).",
-      price: "R$ 1.900,00 o pacote (já está incluído condomínio e IPTU",
+      price: "R$ 1.900,00 o pacote (já está incluído condomínio e IPTU)",
       img: [
         { pic: img1vm },
         { pic: img2vm },
