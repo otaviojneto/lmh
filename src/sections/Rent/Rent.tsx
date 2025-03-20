@@ -1,17 +1,15 @@
 import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { DescriptionProperty, Property1 } from "../../@types";
-import { CardInfo, Modal, Modal1 } from "../../components";
+import { Property } from "../../@types";
+import { CardInfo, Modal } from "../../components";
 import imoveis from "../../mocks/imoveis";
 import { db } from "../../services/firebase";
 import * as S from "./styles";
 
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [property, setProperty] = useState<Property1[]>([]);
-  const [selectedPropertie, setSelectedPropertie] =
-    useState<DescriptionProperty>();
-  const [selectedPropertie1, setSelectedPropertie1] = useState<Property1>();
+  const [property, setProperty] = useState<Property[]>([]);
+  const [selectedPropertie, setSelectedPropertie] = useState<Property>();
 
   useEffect(() => {
     const fetchImoveis = async () => {
@@ -20,7 +18,7 @@ const Rent: React.FC = () => {
         const imoveisData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        })) as Property1[];
+        })) as Property[];
 
         setProperty(imoveisData);
       } catch (error) {
@@ -41,48 +39,40 @@ const Rent: React.FC = () => {
     }
   }, [openModal]);
 
-  const handleModal = (propertie: DescriptionProperty) => {
-    setOpenModal(true);
-    setSelectedPropertie(propertie);
-  };
+  const formatedPropertie = property.map((propertie) => ({
+    ...propertie,
+    img: imoveis.find((item) => item.id === propertie.id)?.img,
+  }));
 
-  const handleModal1 = (propertie?: Property1 | undefined) => {
+  const handleModal = (formatedPropertie?: Property | undefined) => {
     setOpenModal(true);
-    setSelectedPropertie1(propertie);
+    setSelectedPropertie(formatedPropertie);
   };
-
   return (
     <S.Container>
       <h1>Imóveis adicionados recentemente</h1>
 
       <S.Cards>
-        {imoveis?.map((propertie, idx) => (
-          <CardInfo
-            key={idx}
-            {...propertie}
-            onClick={() => handleModal(propertie?.descriptionProperty)}
-          />
-        ))}
+        {formatedPropertie?.map((propertie, idx) => {
+          const img =
+            typeof propertie.img?.[0] === "object"
+              ? propertie.img?.[0]?.pic
+              : propertie.img?.[0];
+          return (
+            <CardInfo
+              key={idx}
+              {...propertie}
+              img={img}
+              value={propertie.value.toString()}
+              onClick={() => handleModal(propertie as Property | undefined)}
+            />
+          );
+        })}
       </S.Cards>
-      <S.Cards>
-        {property?.map((propertie, idx) => (
-          <CardInfo
-            key={idx}
-            {...propertie}
-            value={propertie.value.toString()}
-            onClick={() => handleModal1(propertie as Property1 | undefined)}
-          />
-        ))}
-      </S.Cards>
-      {/* {openModal && (
+
+      {openModal && (
         <Modal
           propertie={selectedPropertie}
-          closeModal={() => setOpenModal(false)}
-        />
-      )} */}
-      {openModal && (
-        <Modal1
-          propertie={selectedPropertie1}
           closeModal={() => setOpenModal(false)}
         />
       )}

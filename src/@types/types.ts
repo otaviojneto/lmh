@@ -1,17 +1,3 @@
-export type Property = {
-  descriptionProperty: DescriptionProperty;
-};
-
-export type DescriptionProperty = {
-  title: string;
-  description: string;
-  room: number;
-  address: string;
-  price: string;
-  garage: string;
-  img: Pic[];
-};
-
 export type Pic = {
   pic: string;
 };
@@ -34,7 +20,7 @@ export type CardProperty = {
   area?: number;
 };
 
-export type Property1 = {
+export type Property = {
   id: string;
   typePropertie: string;
   city: string;
@@ -45,18 +31,18 @@ export type Property1 = {
   userId?: string;
   neighborhood: string;
   descriptionProperty?: DescriptionProperty;
+  img?: Pic[];
 };
 
-export type DescriptionProperty1 = {
+export type DescriptionProperty = {
   typePropertie: string;
   description: string;
   address: string;
   numberRooms: number;
   price?: string;
+  descriptionValue?: string;
   condominium?: number;
   iptu?: number;
   suites?: number;
   area?: number;
 };
-
-export type FullProperty = CardProperty & Property;

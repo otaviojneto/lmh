@@ -1,12 +1,12 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
+import { IcClose } from "../../icons";
 import SwiperReact from "../SwiperReact";
 import * as S from "./styles";
-import { DescriptionProperty } from "../../@types";
-import { IcClose } from "../../icons";
+import { Property } from "../../@types";
 
 export type ModalProps = {
-  propertie?: DescriptionProperty;
+  propertie?: Property;
   closeModal?: () => void;
 };
 
@@ -30,14 +30,16 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
           </S.Rooms>
 
           <S.Infos>
-            <h1>{propertie?.title}</h1>
+            <h1>{propertie?.typePropertie}</h1>
             <S.Description>
-              <S.Text>Descrição:</S.Text>{" "}
-              <S.TextDescription>{propertie?.description}</S.TextDescription>
+              <S.Text>Descrição:</S.Text>
+              <S.TextDescription>
+                {propertie?.descriptionProperty?.description}
+              </S.TextDescription>
             </S.Description>
             <S.Description>
               <S.Text>Quartos:</S.Text>
-              <S.TextDescription>{propertie?.room}</S.TextDescription>
+              <S.TextDescription>{propertie?.numberRooms}</S.TextDescription>
             </S.Description>
             <S.Description>
               <S.Text>Garagem:</S.Text>
@@ -45,11 +47,17 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
             </S.Description>
             <S.Description>
               <S.Text>Localização:</S.Text>
-              <S.TextDescription>{propertie?.adress}</S.TextDescription>
+              <S.TextDescription>
+                {propertie?.descriptionProperty?.address} - {propertie?.city} -{" "}
+                {propertie?.neighborhood}
+              </S.TextDescription>
             </S.Description>
             <S.Description>
               <S.Text>Preço:</S.Text>
-              <S.TextDescription>{propertie?.price}</S.TextDescription>
+              <S.TextDescription>
+                {propertie?.descriptionProperty?.price}{" "}
+                {propertie?.descriptionProperty?.descriptionValue}
+              </S.TextDescription>
             </S.Description>
           </S.Infos>
         </S.Content>
