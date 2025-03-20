@@ -17,14 +17,46 @@ export type Pic = {
 };
 
 export type CardProperty = {
-  img: string;
+  img?: string;
   m?: number | undefined;
+  city?: string;
+  garage?: string;
+  numberRooms?: number;
+  neighborhood?: string;
+  value?: string;
+  typePropertie?: string;
+  description?: string;
+  address?: string;
+  price?: string;
+  condominium?: number;
+  iptu?: number;
+  suites?: number;
+  area?: number;
+};
+
+export type Property1 = {
+  id: string;
+  typePropertie: string;
   city: string;
   garage: string;
+  value: number;
   numberRooms: number;
+  area?: number;
+  userId?: string;
   neighborhood: string;
-  value: string;
+  descriptionProperty?: DescriptionProperty;
+};
+
+export type DescriptionProperty1 = {
   typePropertie: string;
+  description: string;
+  address: string;
+  numberRooms: number;
+  price?: string;
+  condominium?: number;
+  iptu?: number;
+  suites?: number;
+  area?: number;
 };
 
 export type FullProperty = CardProperty & Property;
