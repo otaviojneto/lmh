@@ -6,7 +6,7 @@ export type DescriptionProperty = {
   title: string;
   description: string;
   room: number;
-  adress: string;
+  address: string;
   price: string;
   garage: string;
   img: Pic[];

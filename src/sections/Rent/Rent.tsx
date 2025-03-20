@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { CardInfo, Modal } from "../../components";
-import * as S from "./styles";
-import imoveis from "../../mocks/imoveis";
-import {
-  DescriptionProperty,
-  DescriptionProperty1,
-  Property1,
-} from "../../@types";
 import { collection, getDocs } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { DescriptionProperty, Property1 } from "../../@types";
+import { CardInfo, Modal, Modal1 } from "../../components";
+import imoveis from "../../mocks/imoveis";
 import { db } from "../../services/firebase";
+import * as S from "./styles";
 
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [property, setProperty] = useState<Property1[]>([]);
   const [selectedPropertie, setSelectedPropertie] =
     useState<DescriptionProperty>();
-  const [selectedPropertie1, setSelectedPropertie1] =
-    useState<DescriptionProperty1>();
+  const [selectedPropertie1, setSelectedPropertie1] = useState<Property1>();
 
   useEffect(() => {
     const fetchImoveis = async () => {
@@ -51,7 +46,7 @@ const Rent: React.FC = () => {
     setSelectedPropertie(propertie);
   };
 
-  const handleModal1 = (propertie?: DescriptionProperty1 | undefined) => {
+  const handleModal1 = (propertie?: Property1 | undefined) => {
     setOpenModal(true);
     setSelectedPropertie1(propertie);
   };
@@ -75,19 +70,19 @@ const Rent: React.FC = () => {
             key={idx}
             {...propertie}
             value={propertie.value.toString()}
-            onClick={() =>
-              handleModal1(
-                propertie?.descriptionProperty as
-                  | DescriptionProperty1
-                  | undefined
-              )
-            }
+            onClick={() => handleModal1(propertie as Property1 | undefined)}
           />
         ))}
       </S.Cards>
-      {openModal && (
+      {/* {openModal && (
         <Modal
-          propertie={selectedPropertie || selectedPropertie1}
+          propertie={selectedPropertie}
+          closeModal={() => setOpenModal(false)}
+        />
+      )} */}
+      {openModal && (
+        <Modal1
+          propertie={selectedPropertie1}
           closeModal={() => setOpenModal(false)}
         />
       )}

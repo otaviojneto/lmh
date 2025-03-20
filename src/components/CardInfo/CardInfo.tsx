@@ -32,7 +32,7 @@ const CardInfo: React.FC<CardInfoProps> = ({
               {neighborhood}, {city}
             </p>
 
-            <h4>valor: {value}</h4>
+            <h4>valor: R$ {value}</h4>
           </S.Info>
 
           <S.Footer>
