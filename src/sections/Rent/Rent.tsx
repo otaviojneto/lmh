@@ -55,9 +55,9 @@ const Rent: React.FC = () => {
       <S.Cards>
         {formatedPropertie?.map((propertie, idx) => {
           const img =
-            typeof propertie.img?.[0] === "object"
-              ? propertie.img?.[0]?.pic
-              : propertie.img?.[0];
+            typeof propertie.images?.[0] === "object"
+              ? propertie.images?.[0]
+              : propertie.images?.[0];
           return (
             <CardInfo
               key={idx}

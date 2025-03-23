@@ -31,7 +31,7 @@ export type Property = {
   userId?: string;
   neighborhood: string;
   descriptionProperty?: DescriptionProperty;
-  img?: Pic[];
+  images?: string[];
 };
 
 export type DescriptionProperty = {

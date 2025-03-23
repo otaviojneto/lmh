@@ -21,9 +21,9 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
         <S.Content>
           <S.Rooms>
             <SwiperReact>
-              {propertie?.img?.map((images) => (
-                <SwiperSlide key={images?.pic}>
-                  <S.Image src={images?.pic} alt="image" />
+              {propertie?.images?.map((img) => (
+                <SwiperSlide key={img}>
+                  <S.Image src={img} alt="image" />
                 </SwiperSlide>
               ))}
             </SwiperReact>
