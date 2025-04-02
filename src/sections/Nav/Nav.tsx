@@ -43,7 +43,7 @@ const Nav: React.FC<S.OpenProps> = () => {
       <S.Brand href="#" />
 
       <Hamburguer
-        color={theme.colors.black}
+        color={theme.colors.white}
         onClick={() => setOpenMenu(!openMenu)}
         isOpen={openMenu}
       />

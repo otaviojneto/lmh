@@ -8,7 +8,7 @@ export type OpenProps = {
 
 export const Container = styled.div`
   align-items: center;
-  background-color: ${theme.colors.grey5};
+  background-color: ${theme.colors.black};
   box-shadow: 0 -11px 21px 0;
   display: flex;
   justify-content: space-between;
@@ -40,7 +40,7 @@ export const Menu = styled.div<OpenProps>`
       width: 100%;
 
       a {
-        color: ${theme.colors.secondary};
+        color: ${theme.colors.white};
         font-size: 18px;
         font-weight: 700;
         padding: 9px 140px;
@@ -63,15 +63,15 @@ export const Menu = styled.div<OpenProps>`
 
     ul {
       background-color: inherit;
+      padding-top: 0;
       display: flex;
       width: auto;
 
       li {
-        background-color: ${theme.colors.grey5};
         border-top: 0;
         a {
           border-bottom: 1px solid transparent;
-          color: ${theme.colors.secondary};
+          color: ${theme.colors.white};
           font-size: 14px;
           font-weight: 700;
           padding: 5px;
@@ -79,7 +79,7 @@ export const Menu = styled.div<OpenProps>`
 
           &:hover {
             border-bottom: 1px solid ${theme.colors.black};
-            color: ${theme.colors.black};
+            color: ${theme.colors.grey2};
             padding: 5px;
           }
         }
@@ -96,10 +96,16 @@ export const Menu = styled.div<OpenProps>`
 
 export const Brand = styled.a`
   background-image: url(${IcBrand});
-  background-size: 40px;
-  height: 40px;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  background-color: white;
+  background-position: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  height: 42px;
   transition: ease-in 0.4s;
-  width: 40px;
+  width: 42px;
 
   &:hover {
     opacity: 0.6;

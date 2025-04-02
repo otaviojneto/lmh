@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../styles/colors";
 
 export const Container = styled.div`
-  background-color: ${theme.colors.grey5};
+  background-color: ${theme.colors.black};
   box-shadow: 0 17px 27px 10px;
   display: flex;
   justify-content: space-evenly;
@@ -12,7 +12,7 @@ export const Container = styled.div`
     text-align: center;
 
     a {
-      color: ${theme.colors.secondary};
+      color: ${theme.colors.white};
     }
   }
 
