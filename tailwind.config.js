@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        nunito: ["Nunito", "sans-serif"],
         sans: ["Manrope", "sans-serif"],
         body: ["Manrope", "sans-serif"],
       },
