@@ -4,8 +4,6 @@ import { Property } from "../../@types";
 import { CardInfo, Modal } from "../../components";
 import imoveis from "../../mocks/imoveis";
 import { db } from "../../services/firebase";
-import * as S from "./styles";
-
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [property, setProperty] = useState<Property[]>([]);
