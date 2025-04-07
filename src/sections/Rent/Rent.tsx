@@ -49,10 +49,12 @@ const Rent: React.FC = () => {
     setSelectedPropertie(formatedPropertie);
   };
   return (
-    <S.Container>
-      <h1>Imóveis adicionados recentemente</h1>
+    <div className="container mb-10 relative">
+      <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-3xl">
+        Imóveis adicionados recentemente
+      </h1>
 
-      <S.Cards>
+      <div className="grid grid-cols-4 gap-2 justify-center max-[1200px]:gap-10">
         {formatedPropertie?.map((propertie, idx) => {
           const img =
             typeof propertie.images?.[0] === "object"
@@ -68,7 +70,7 @@ const Rent: React.FC = () => {
             />
           );
         })}
-      </S.Cards>
+      </div>
 
       {openModal && (
         <Modal
@@ -76,7 +78,7 @@ const Rent: React.FC = () => {
           closeModal={() => setOpenModal(false)}
         />
       )}
-    </S.Container>
+    </div>
   );
 };
 
