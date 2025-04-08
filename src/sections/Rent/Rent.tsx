@@ -52,7 +52,7 @@ const Rent: React.FC = () => {
         Imóveis adicionados recentemente
       </h1>
 
-      <div className="grid grid-cols-4 gap-2 justify-center max-[1200px]:gap-10">
+      <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
         {formatedPropertie?.map((propertie, idx) => {
           const img =
             typeof propertie.images?.[0] === "object"

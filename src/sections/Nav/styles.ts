@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Menu = styled.div<OpenProps>`
-  background: inherit;
+  background: ${theme.colors.black};
   display: ${({ $isOpen }) => ($isOpen ? "flex" : "")};
   height: ${({ $isOpen }) => ($isOpen ? "calc(100vh - 70px)" : 0)};
   justify-content: center;
@@ -36,7 +36,7 @@ export const Menu = styled.div<OpenProps>`
     width: 100%;
 
     li {
-      padding: 8px;
+      padding-block: 8px;
       width: 100%;
 
       a {

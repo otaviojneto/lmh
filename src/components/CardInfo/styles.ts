@@ -37,6 +37,7 @@ export const Info = styled.div`
   h2 {
     font-size: 14px;
     font-weight: 700;
+    min-height: 48px;
   }
 `;
 

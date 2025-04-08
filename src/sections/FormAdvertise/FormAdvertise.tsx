@@ -4,10 +4,16 @@ import * as S from "./styles";
 
 const FormAdvertise: React.FC = () => {
   return (
-    <S.Container>
-      <h2>Anuncie conosco</h2>
+    <div className="container ">
+      <h2 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
+        Anuncie conosco
+      </h2>
 
-      <S.Form action="https://submit-form.com/bQCIroJLk" method="POST">
+      <form
+        className="w-full px-4 flex flex-col items-center max-w-[780px] mx-auto space-y-4"
+        action="https://submit-form.com/bQCIroJLk"
+        method="POST"
+      >
         <input
           type="hidden"
           name="_redirect"
@@ -21,8 +27,8 @@ const FormAdvertise: React.FC = () => {
             Enviar
           </Button>
         </S.ContainerButton>
-      </S.Form>
-    </S.Container>
+      </form>
+    </div>
   );
 };
 

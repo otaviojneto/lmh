@@ -39,25 +39,27 @@ const Nav: React.FC<S.OpenProps> = () => {
     };
   }, [openMenu, isMobile]);
   return (
-    <S.Container>
-      <S.Brand href="#" />
+    <div className=" bg-black py-4">
+      <div className="container flex items-center justify-between">
+        <S.Brand href="#" />
 
-      <Hamburguer
-        color={theme.colors.white}
-        onClick={() => setOpenMenu(!openMenu)}
-        isOpen={openMenu}
-      />
+        <Hamburguer
+          color={theme.colors.white}
+          onClick={() => setOpenMenu(!openMenu)}
+          isOpen={openMenu}
+        />
 
-      <S.Menu $isOpen={openMenu}>
-        <ul>
-          {Links.map((item) => (
-            <li key={item.id}>
-              <a href={item.link}>{item.name}</a>
-            </li>
-          ))}
-        </ul>
-      </S.Menu>
-    </S.Container>
+        <S.Menu $isOpen={openMenu}>
+          <ul>
+            {Links.map((item) => (
+              <li key={item.id}>
+                <a href={item.link}>{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </S.Menu>
+      </div>
+    </div>
   );
 };
 
