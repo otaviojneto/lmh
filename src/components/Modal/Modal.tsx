@@ -30,7 +30,9 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
           </S.Rooms>
 
           <S.Infos>
-            <h1>{propertie?.typePropertie}</h1>
+            <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
+              {propertie?.typePropertie}
+            </h1>
             <S.Description>
               <S.Text>Descrição:</S.Text>
               <S.TextDescription>

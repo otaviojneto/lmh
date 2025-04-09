@@ -1,14 +1,14 @@
-import React from 'react';
-import { brand } from '../../assets';
-import { Container, Content } from './styles';
+import React from "react";
+import { brand } from "../../assets";
+import { Content } from "./styles";
 
 const Hero: React.FC = () => {
   return (
-    <Container>
+    <div className="relative h-[478px] overflow-hidden -top-px w-full pt-[75px]">
       <Content>
         <img src={brand} alt="" />
       </Content>
-    </Container>
+    </div>
   );
 };
 

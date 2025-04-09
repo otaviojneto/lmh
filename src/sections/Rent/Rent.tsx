@@ -2,7 +2,6 @@ import { collection, getDocs } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Property } from "../../@types";
 import { CardInfo, Modal } from "../../components";
-import imoveis from "../../mocks/imoveis";
 import { db } from "../../services/firebase";
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +38,6 @@ const Rent: React.FC = () => {
 
   const formatedPropertie = property.map((propertie) => ({
     ...propertie,
-    img: imoveis.find((item) => item.id === propertie.id)?.img,
   }));
 
   const handleModal = (formatedPropertie?: Property | undefined) => {
@@ -47,29 +45,30 @@ const Rent: React.FC = () => {
     setSelectedPropertie(formatedPropertie);
   };
   return (
-    <div className="container mb-10 relative">
-      <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-3xl">
-        Imóveis adicionados recentemente
-      </h1>
+    <div className="relative">
+      <div className="container mb-10 relative">
+        <h1 className="text-center text-xl mb-[30px] font-semibold">
+          Imóveis adicionados recentemente
+        </h1>
 
-      <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
-        {formatedPropertie?.map((propertie, idx) => {
-          const img =
-            typeof propertie.images?.[0] === "object"
-              ? propertie.images?.[0]
-              : propertie.images?.[0];
-          return (
-            <CardInfo
-              key={idx}
-              {...propertie}
-              img={img}
-              value={propertie.value.toString()}
-              onClick={() => handleModal(propertie as Property | undefined)}
-            />
-          );
-        })}
+        <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
+          {formatedPropertie?.map((propertie, idx) => {
+            const img =
+              typeof propertie.images?.[0] === "object"
+                ? propertie.images?.[0]
+                : propertie.images?.[0];
+            return (
+              <CardInfo
+                key={idx}
+                {...propertie}
+                img={img}
+                value={propertie.value.toString()}
+                onClick={() => handleModal(propertie as Property | undefined)}
+              />
+            );
+          })}
+        </div>
       </div>
-
       {openModal && (
         <Modal
           propertie={selectedPropertie}

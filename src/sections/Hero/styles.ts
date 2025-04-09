@@ -2,13 +2,6 @@ import styled from "styled-components";
 import theme from "../../styles/colors";
 import { background } from "../../assets";
 
-export const Container = styled.div`
-  height: 400px;
-  overflow: hidden;
-  top: -1px;
-  width: 100%;
-`;
-
 export const Content = styled.div`
   align-items: center;
   background-attachment: fixed;
