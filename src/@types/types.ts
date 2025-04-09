@@ -18,6 +18,7 @@ export type CardProperty = {
   iptu?: number;
   suites?: number;
   area?: number;
+  hasGarage: string;
 };
 
 export type Property = {
@@ -25,8 +26,10 @@ export type Property = {
   typePropertie: string;
   city: string;
   garage: string;
+  hasGarage: string;
   value: number;
   numberRooms: number;
+  saleOrRent: "sale" | "rent";
   area?: number;
   userId?: string;
   neighborhood: string;

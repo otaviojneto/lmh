@@ -13,7 +13,7 @@ const CardInfo: React.FC<CardInfoProps> = ({
   onClick,
   typePropertie,
   city,
-  garage,
+  hasGarage,
   neighborhood,
   value,
   m,
@@ -53,7 +53,13 @@ const CardInfo: React.FC<CardInfoProps> = ({
             <div>
               <img src={IcGarage} alt="img" />
               <p>Garagem</p>
-              <h5>{garage}</h5>
+              <h5>
+                {hasGarage === "nao"
+                  ? "Não"
+                  : hasGarage === "sim"
+                  ? "Sim"
+                  : hasGarage}
+              </h5>
             </div>
           </S.Footer>
         </S.Base>
