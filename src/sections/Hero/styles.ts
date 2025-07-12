@@ -24,7 +24,7 @@ export const Content = styled.div`
   }
 
   &::after {
-    background-color: ${theme.colors.bgColor};
+    background-color: #ffffff;
     bottom: -36px;
     content: "";
     height: 86px;

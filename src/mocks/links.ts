@@ -1,27 +1,21 @@
 const Link = [
   {
     id: 1,
-    name: 'Início',
-    link: '/',
-    icons: '',
+    name: "Início",
+    link: "/",
+    icons: "",
   },
   {
     id: 2,
-    name: 'Locação',
-    link: '/',
-    icons: '',
-  },
-  {
-    id: 3,
-    name: 'Vendas',
-    link: '/',
-    icons: '',
+    name: "Imóveis",
+    link: "/properties",
+    icons: "",
   },
   {
     id: 4,
-    name: 'Serviços',
-    link: '/',
-    icons: '',
+    name: "Serviços",
+    link: "/services",
+    icons: "",
   },
 ];
 

@@ -2,7 +2,7 @@ import React from "react";
 import { IcBedroom, IcGarage, IcRuler } from "../../icons";
 import * as S from "./styles";
 import { CardProperty } from "../../@types/types";
-import Button from "../Button";
+import { Button } from "../ui/button";
 
 export type CardInfoProps = CardProperty & {
   onClick?: () => void;
@@ -65,7 +65,9 @@ const CardInfo: React.FC<CardInfoProps> = ({
         </S.Base>
 
         <S.BaseButton>
-          <Button variant="outline">Ver Imóvel</Button>
+          <Button className="font-semibold text-gray-900" variant="outline">
+            Ver Imóvel
+          </Button>
         </S.BaseButton>
       </button>
     </S.Card>

@@ -1,6 +1,7 @@
 import React from "react";
-import { Button, InputText } from "../../components";
+import { InputText } from "../../components";
 import * as S from "./styles";
+import { Button } from "@/components/ui/button";
 
 const FormAdvertise: React.FC = () => {
   return (
