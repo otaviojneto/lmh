@@ -39,8 +39,8 @@ const Nav: React.FC<S.OpenProps> = () => {
     };
   }, [openMenu, isMobile]);
   return (
-    <div className="bg-black py-4 fixed w-full z-50">
-      <div className="container flex items-center justify-between">
+    <div className="bg-black py-4 fixed w-full z-50 ">
+      <div className="container flex items-center justify-between max-w-[1400px]">
         <S.Brand href="#" />
 
         <Hamburguer

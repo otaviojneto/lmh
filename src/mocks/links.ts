@@ -8,7 +8,7 @@ const Link = [
   {
     id: 2,
     name: "Imóveis",
-    link: "/properties",
+    link: "/",
     icons: "",
   },
   {
