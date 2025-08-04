@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { analiseDoc, analiseImovel } from "../../assets";
 
 const AboutBox: React.FC = () => {
   const work = [
@@ -134,8 +135,8 @@ const AboutBox: React.FC = () => {
           </h1>
           <img
             className="md:w-[540px] h-[300px] rounded-md"
-            src="/src/assets/analise_imovel.png"
-            alt=""
+            src={analiseImovel}
+            alt="análise do imóvel"
           />
         </div>
         <div className="grid lg:flex flex-row-reverse items-center gap-8">
@@ -146,8 +147,8 @@ const AboutBox: React.FC = () => {
           </h1>
           <img
             className="md:w-[540px] h-[300px] rounded-md"
-            src="/src/assets/analise_de_doc.png"
-            alt=""
+            src={analiseDoc}
+            alt="análise de documento"
           />
         </div>
       </div>
