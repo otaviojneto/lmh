@@ -112,7 +112,6 @@ const AboutBox: React.FC = () => {
       text: "A compra de um imóvel irregular pode resultar na necessidade de desembolsos adicionais para regularização ou, em casos extremos, na impossibilidade de uso ou venda do bem.",
     },
   ];
-
   return (
     <div className="pb-12">
       <div className="grid lg:flex gap-4 justify-between mb-8 w-full cursor-default">
