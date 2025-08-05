@@ -1,13 +1,39 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 import Services from "../pages/Services";
+import ProtectedRoute from "./ProtectedRoute";
+import NewProperty from "../pages/Admin/NewProperty";
+import HomeAdmin from "../pages/Admin/Home";
+import { Login } from "../pages/Admin";
+import PropertyList from "@/pages/Admin/PropertyList";
 
 const AppRoutes: React.FC = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/services" element={<Services />} />
+    {/* Redirecionamento raiz */}
+    <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+    <Route path="/admin/login" element={<Login />} />
+    {/* Todas as rotas protegidas */}
+    <Route element={<ProtectedRoute />}>
+      <Route path="/admin" element={<HomeAdmin />}>
+        {/* Redirecionamento padrão dentro do admin */}
+        <Route index element={<Navigate to="property-list" replace />} />
+
+        {/* Sub-rotas principais */}
+        <Route path="edit-property/:id" element={<NewProperty />} />
+        <Route path="property-list" element={<PropertyList />} />
+        <Route path="new-property" element={<NewProperty />} />
+      </Route>
+    </Route>
+    {/* Fallback para rotas não encontradas */}
+    <Route path="*" element={<Navigate to="/admin/login" replace />} />
   </Routes>
 );
 
 export default AppRoutes;
+// <Routes>
+//   <Route path="/" element={<Home />} />
+//   <Route path="/services" element={<Services />} />
+// </Routes>;
