@@ -7,11 +7,13 @@ import NewProperty from "../pages/Admin/NewProperty";
 import HomeAdmin from "../pages/Admin/Home";
 import { Login } from "../pages/Admin";
 import PropertyList from "@/pages/Admin/PropertyList";
+import Properties from "@/pages/Properties";
 
 const AppRoutes: React.FC = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/services" element={<Services />} />
+    <Route path="/properties" element={<Properties />} />
     {/* Redirecionamento raiz */}
     <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
     <Route path="/admin/login" element={<Login />} />

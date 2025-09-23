@@ -1,16 +1,14 @@
 import React from "react";
-import Abaut from "../sections/Abaut";
 import FormAdvertise from "../sections/FormAdvertise";
 import Hero from "../sections/Hero";
-import Rent from "../sections/Rent";
+import About from "@/sections/About";
 
 const Home: React.FC = () => {
   return (
     <>
       <Hero />
-      <Rent />
+      <About />
       <FormAdvertise />
-      <Abaut />
     </>
   );
 };
