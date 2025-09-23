@@ -10,6 +10,7 @@ export const Button = styled.button`
 export const ModalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   height: 100vh;
+  margin-top: 240px;
   position: absolute;
   top: -4px;
   left: 0;

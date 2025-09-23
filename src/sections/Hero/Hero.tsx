@@ -1,13 +1,24 @@
 import React from "react";
-import { brand } from "../../assets";
-import { Content } from "./styles";
+import { background, brand } from "../../assets";
 
 const Hero: React.FC = () => {
   return (
     <div className="relative h-[478px] bg-white overflow-hidden -top-px w-full pt-[75px]">
-      <Content>
-        <img src={brand} alt="" />
-      </Content>
+      <div
+        className="flex items-center justify-center w-screen relative bg-no-repeat bg-fixed bg-contain"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex items-center gap-10">
+          <img className="h-[350px]" src={brand} alt="" />
+          <h2 className="max-w-[430px] font-bold text-lg text-[#c5c5c5]">
+            Escritório especializado em consultoria jurídica e imobiliária.
+            Atuamos na área de locação, compra e venda de imóveis, análise de
+            documentos, confecção de contratos e vistorias e assessoria juridica
+            e imobiliária.
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };

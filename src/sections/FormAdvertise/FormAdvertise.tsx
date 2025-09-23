@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const FormAdvertise: React.FC = () => {
   return (
-    <div className="container ">
+    <div className="container mb-6">
       <h2 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
         Anuncie conosco
       </h2>

@@ -47,9 +47,7 @@ const Rent: React.FC = () => {
   return (
     <div className="relative">
       <div className="container mb-10 relative">
-        <h1 className="text-center text-xl mb-[30px] font-semibold">
-          Imóveis adicionados recentemente
-        </h1>
+        <h1 className="text-center text-xl mb-[30px] font-semibold">Imóveis</h1>
 
         <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
           {formatedPropertie?.map((propertie, idx) => {
