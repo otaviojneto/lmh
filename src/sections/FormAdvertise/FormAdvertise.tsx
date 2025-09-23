@@ -11,7 +11,7 @@ const FormAdvertise: React.FC = () => {
       </h2>
 
       <form
-        className="w-full px-4 flex flex-col items-center max-w-[780px] mx-auto space-y-4"
+        className="w-full flex flex-col items-center max-w-[780px] mx-auto space-y-4"
         action="https://submit-form.com/bQCIroJLk"
         method="POST"
       >
