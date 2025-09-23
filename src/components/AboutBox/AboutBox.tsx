@@ -5,7 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { analiseDoc, analiseImovel } from "../../assets";
 
 const AboutBox: React.FC = () => {
   const work = [
