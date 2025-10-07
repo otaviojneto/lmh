@@ -8,12 +8,15 @@ import HomeAdmin from "../pages/Admin/Home";
 import { Login } from "../pages/Admin";
 import PropertyList from "@/pages/Admin/PropertyList";
 import Properties from "@/pages/Properties";
+import AuthPage from "../pages/Login";
 
 const AppRoutes: React.FC = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/services" element={<Services />} />
     <Route path="/properties" element={<Properties />} />
+    {/* <Route path="/home-test" element={<AuthPage />} /> */}
+
     {/* Redirecionamento raiz */}
     <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
     <Route path="/admin/login" element={<Login />} />

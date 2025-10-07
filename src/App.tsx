@@ -2,6 +2,7 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import "./styles/global.css";
 import AppRoutes from "./routes";
 import { Footer, Nav } from "./sections";
+import { Toaster } from "./components/ui/sonner";
 
 function Layout() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Layout />
+      <Toaster />
     </BrowserRouter>
   );
 }
