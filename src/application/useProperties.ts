@@ -7,3 +7,11 @@ export const useProperties = () => {
     queryFn: properties.getProperties,
   });
 };
+
+export const usePropertieId = (id: string) => {
+  return useQuery({
+    queryKey: ["propertie", id],
+    queryFn: () => properties.getPropertieId(id),
+    enabled: !!id, // só executa se o id existir
+  });
+};

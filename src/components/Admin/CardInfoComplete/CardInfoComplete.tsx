@@ -1,13 +1,11 @@
-import React from "react";
-import * as S from "./styles";
-import Title from "../Title";
-import { Button, Modal } from "@mui/material";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../../services/firebase";
-import ModalInfo from "../ModalInfo";
-import { Property as PropertyInfo } from "../../../@types/Propety";
-import noImage from "../../../assets/noImage.png";
 import { Properties } from "@/services/properties/types";
+import { Modal } from "@mui/material";
+import React from "react";
+import noImage from "../../../assets/noImage.png";
+import ModalInfo from "../ModalInfo";
+import Title from "../Title";
+import * as S from "./styles";
+import { Button } from "@/components/ui/button";
 
 export type CardInfoCompleteProps = {
   property: Properties;
@@ -40,43 +38,6 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
   } = property;
   const [openModal, setOpenModal] = React.useState(false);
   console.log(property);
-
-  // const handleDelete = async () => {
-  //   try {
-  //     // 1. Deletar imagens no Cloudinary (se existirem).
-  //     if (imagePublicIds && imagePublicIds.length > 0) {
-  //       const deleteImageResponse = await fetch(
-  //         "http://localhost:5000/api/v1/images",
-  //         {
-  //           method: "DELETE",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-  //           },
-  //           body: JSON.stringify({
-  //             publicIds: imagePublicIds, // 👈 Envie o array completo
-  //           }),
-  //         }
-  //       );
-
-  //       if (!deleteImageResponse.ok) {
-  //         const errorData = await deleteImageResponse.json();
-  //         throw new Error(errorData.error || "Falha ao deletar imagem");
-  //       }
-  //     }
-
-  //     // 2. Deletar o documento no Firestore (sempre executa)
-  //     await deleteDoc(doc(db, "imoveis", property.id));
-
-  //     // 3. Atualizar a lista
-  //     onDelete(property.id);
-  //   } catch (error) {
-  //     console.error("Erro ao excluir:", error);
-  //     alert(error instanceof Error ? error.message : "Erro ao excluir imóvel");
-  //   } finally {
-  //     setOpenModal(false);
-  //   }
-  // };
 
   return (
     <S.CardInfoCompleteContainer>
@@ -134,16 +95,14 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
           <Button
             onClick={handleEditProperty}
             color="primary"
-            size="small"
-            variant="contained"
+            variant="default"
           >
             Editar
           </Button>
           <Button
             onClick={() => setOpenModal(true)}
             color="inherit"
-            size="small"
-            variant="outlined"
+            variant="outline"
             disabled={isDeleting}
           >
             {isDeleting ? "Deletando..." : "Deletar"}
@@ -156,13 +115,10 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
           <S.Info>Você deseja deletar este imóvel?</S.Info>
           <S.StyleButton>
             {/* <Button variant="contained" size="small" onClick={handleDelete}> */}
-            <Button variant="contained" size="small">
-              Sim
-            </Button>
+            <Button variant="default">Sim</Button>
             <Button
-              variant="outlined"
+              variant="outline"
               color="inherit"
-              size="small"
               onClick={() => setOpenModal(false)}
             >
               Não
