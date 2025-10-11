@@ -8,7 +8,7 @@ import HomeAdmin from "../pages/Admin/Home";
 import { Login } from "../pages/Admin";
 import PropertyList from "@/pages/Admin/PropertyList";
 import Properties from "@/pages/Properties";
-import AuthPage from "../pages/Login";
+// import AuthPage from "../pages/Login";
 
 const AppRoutes: React.FC = () => (
   <Routes>

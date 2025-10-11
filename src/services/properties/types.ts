@@ -18,6 +18,8 @@ export interface Properties {
   neighborhood: string;
   city: string;
   sale_or_rent: string;
+  title_property?: string;
+  complementary_value_text?: string;
   created_at: string;
   property_images: PropertyImage[];
 }
