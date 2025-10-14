@@ -1,42 +1,53 @@
-import { usePropertieId } from "@/application/useProperties";
+import { usePostProperty } from "@/application/useProperties";
 import FormProperties from "@/components/FormProperties/FormProperties";
-import { useParams } from "react-router-dom";
+import { FormValues } from "@/components/FormProperties/schema";
+import { CheckCircle2, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const NewProperty: React.FC = () => {
-  const params = useParams();
-  const { data: property, isLoading } = usePropertieId(params?.id || "");
+  const { mutateAsync: createProperty, isPending } = usePostProperty();
+  const navigate = useNavigate();
 
-  console.log(property);
-  // se tiver o id no params mandar um patch se nao tiver o id e um novo imovel mandar um post
-  if (isLoading) {
-    return (
-      <section className="mt-40 flex h-80 items-center justify-center">
-        <div className="flex h-4 items-end space-x-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div
-              key={i}
-              className="bg-primary w-1 animate-[bar_1s_ease-in-out_infinite]"
-              style={{ animationDelay: `${i * 0.1}s` }}
-            />
-          ))}
-          <style>{`
-            @keyframes bar {
-              0%,
-              100% {
-                height: 0.25rem;
-                opacity: 0.3;
-              }
-              50% {
-                height: 1rem;
-                opacity: 1;
-              }
-            }
-          `}</style>
+  const onSubmit = async (values: FormValues) => {
+    console.log(values);
+    try {
+      const response = await createProperty({
+        title_property: values.title_property,
+        description: values.description,
+        address: values.address,
+        city: values.city,
+        neighborhood: values.neighborhood,
+        number_rooms: values.number_rooms,
+        suites: values.suites,
+        area: values.area,
+        value: values.value,
+        complementary_value_text: values.complementary_value_text,
+        sale_or_rent: values.sale_or_rent,
+        has_garage: values.has_garage,
+        condominium: values.condominium,
+        iptu: values.iptu,
+        type_propertie: values.type_propertie,
+      });
+
+      toast.custom(() => (
+        <div className="flex items-center gap-3 bg-green-100 text-green-800 p-3 rounded-xl shadow">
+          <CheckCircle2 className="w-5 h-5 text-green-600" />
+          <span className="font-semibold text-sm">{response.message}</span>
         </div>
-      </section>
-    );
-  }
+      ));
+      navigate("/admin/property-list");
+    } catch (error) {
+      console.error("Erro ao criar imóvel:", error);
+      toast.custom(() => (
+        <div className="flex items-center gap-3 bg-red-100 text-red-800 p-3 rounded-xl shadow">
+          <X className="w-5 h-5 text-red-600" />
+          <span className="font-semibold">Erro ao criar imóvel</span>
+        </div>
+      ));
+    }
+  };
 
-  return <FormProperties property={property} />;
+  return <FormProperties onSubmit={onSubmit} isPending={isPending} />;
 };
 export default NewProperty;

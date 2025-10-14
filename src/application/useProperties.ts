@@ -1,5 +1,6 @@
+import { FormValues } from "@/components/FormProperties/schema";
 import { properties } from "@/services/properties/properties";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useProperties = () => {
   return useQuery({
@@ -13,5 +14,17 @@ export const usePropertieId = (id: string) => {
     queryKey: ["propertie", id],
     queryFn: () => properties.getPropertieId(id),
     enabled: !!id, // só executa se o id existir
+  });
+};
+
+export const usePostProperty = () => {
+  return useMutation<{ id: string; message: string }, unknown, FormValues>({
+    mutationFn: (data) => properties.postProperty(data),
+  });
+};
+
+export const usePatchProperty = (id: string) => {
+  return useMutation<{ id: string; message: string }, unknown, FormValues>({
+    mutationFn: (data) => properties.patchProperty(id, data),
   });
 };

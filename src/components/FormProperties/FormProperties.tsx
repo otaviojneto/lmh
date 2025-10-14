@@ -17,19 +17,29 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import spinner from "../../icons/spinner.svg";
 
 import { useNavigate } from "react-router-dom";
-import { formSchema, FormValues } from "@/pages/Admin/NewProperty/schema";
+
+import { onlyNumbers } from "@/lib/keyboartNumberInput";
 import { Properties } from "@/services/properties/types";
+import { X } from "lucide-react";
+import { formSchema, FormValues } from "./schema";
 
 export type FormPropertiesProps = {
   property?: Properties;
+  onSubmit: (data: FormValues) => void;
+  isPending?: boolean;
 };
 
-const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
+const FormProperties: React.FC<FormPropertiesProps> = ({
+  property,
+  onSubmit,
+  isPending,
+}) => {
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
   const navigate = useNavigate();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -46,12 +56,32 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
       complementary_value_text: property?.complementary_value_text || "",
       condominium: property?.condominium?.toString() || "",
       iptu: property?.iptu?.toString() || "",
-      type_propertie: "Aluguel",
-      has_garage: "Não",
+      type_propertie: property?.type_propertie || "",
+      has_garage: property?.has_garage || "no",
       sale_or_rent: property?.sale_or_rent || "rent",
+      property_images: property?.property_images || [{ id: "", url: "" }],
     },
   });
-  console.log(property);
+
+  useEffect(() => {
+    if (property?.property_images?.length) {
+      setPreviewImages(property.property_images.map((img) => img.url));
+    }
+  }, [property]);
+
+  // 🔹 Gera previews das novas imagens
+  const handleImagePreview = (files: FileList | null) => {
+    if (!files) return;
+    const newPreviews = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
+    setPreviewImages((prev) => [...prev, ...newPreviews]);
+  };
+
+  // 🔹 Remove imagem individualmente
+  const handleRemoveImage = (index: number) => {
+    setPreviewImages((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const { reset } = form;
   useEffect(() => {
@@ -67,10 +97,6 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
       });
     }
   }, [property, reset]);
-
-  const onSubmit = (values: FormValues) => {
-    console.log(values);
-  };
 
   return (
     <div className="max-w-3xl mx-auto mt-8 ">
@@ -155,7 +181,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Quartos</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -167,7 +198,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Suítes</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -179,7 +215,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Área m²</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -194,7 +235,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Valor</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -245,7 +291,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Condomínio</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -257,7 +308,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">IPTU</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input
+                        onKeyDown={onlyNumbers}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        {...field}
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -289,8 +345,8 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
 
             <FormField
               control={form.control}
-              name="arquivos"
-              render={({ field }) => (
+              name="property_images"
+              render={() => (
                 <FormItem>
                   <FormLabel className="font-semibold">
                     Upload de Imagens
@@ -298,14 +354,42 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
                   <FormControl>
                     <Input
                       type="file"
+                      accept="image/*"
                       multiple
-                      onChange={(e) => field.onChange(e.target.files)}
+                      onChange={(e) => {
+                        handleImagePreview(e.target.files);
+                      }}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
           </div>
+          {/*  Preview das imagens */}
+          {previewImages.length > 0 && (
+            <div className="mt-4 grid grid-cols-3 gap-3">
+              {previewImages.map((src, index) => (
+                <div
+                  key={index}
+                  className="relative w-full h-32 border rounded-lg overflow-hidden group"
+                >
+                  <img
+                    src={src}
+                    alt={`Preview ${index}`}
+                    className="object-cover w-full h-full"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(index)}
+                    className="absolute top-1 right-1 bg-white/80 hover:bg-red-100 rounded-full p-1 opacity-0 group-hover:opacity-100 transition"
+                  >
+                    <X className="w-4 h-4 text-red-500" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="flex justify-end gap-4 mt-6">
             <Button
@@ -316,8 +400,12 @@ const FormProperties: React.FC<FormPropertiesProps> = ({ property }) => {
             >
               Cancelar
             </Button>
-            <Button className="px-10" type="submit">
-              Enviar <img src={spinner} alt="" />
+            <Button
+              variant={isPending ? "outline" : "default"}
+              className="px-10"
+              type="submit"
+            >
+              {isPending ? <img src={spinner} alt="" /> : "Enviar"}
             </Button>
           </div>
         </form>

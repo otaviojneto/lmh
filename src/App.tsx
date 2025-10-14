@@ -1,12 +1,12 @@
 import { BrowserRouter, useLocation } from "react-router-dom";
-import "./styles/global.css";
+import { Toaster } from "./components/ui/sonner";
+import { NavigationProvider } from "./providers/NavigationProvider";
 import AppRoutes from "./routes";
 import { Footer, Nav } from "./sections";
-import { Toaster } from "./components/ui/sonner";
+import "./styles/global.css";
 
 function Layout() {
   const location = useLocation();
-
   // Oculta Nav e Footer nas rotas do admin
   const hideLayout = location.pathname.startsWith("/admin");
 
@@ -22,6 +22,7 @@ function Layout() {
 function App() {
   return (
     <BrowserRouter>
+      <NavigationProvider />
       <Layout />
       <Toaster />
     </BrowserRouter>

@@ -28,3 +28,8 @@ export interface PropertyImage {
   id: string;
   url: string;
 }
+
+export type PostPropertyResponse = {
+  id: string;
+  message: string;
+};

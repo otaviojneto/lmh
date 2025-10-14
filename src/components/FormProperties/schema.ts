@@ -16,7 +16,7 @@ export const formSchema = z.object({
   condominium: z.string().optional(),
   iptu: z.string().optional(),
   type_propertie: z.string().optional(),
-  arquivos: z.any().optional(),
+  property_images: z.any().optional(),
 });
 
 export type FormValues = z.infer<typeof formSchema>;
