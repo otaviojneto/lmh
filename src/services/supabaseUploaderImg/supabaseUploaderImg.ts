@@ -24,4 +24,3 @@ export const supabaseUploaderImg = {
     return `${url}public/properties/${fileName}`;
   },
 };
-// TESTAR SE ESTA COMPILANDO A IMG

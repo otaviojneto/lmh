@@ -1,4 +1,7 @@
-import { usePropertieId } from "@/application/useProperties";
+import {
+  usePatchPropertyImages,
+  usePropertieId,
+} from "@/application/useProperties";
 import { useUploadImages } from "@/application/useSupaUploaderImg";
 import FormProperties from "@/components/FormProperties/FormProperties";
 import { FormValues } from "@/components/FormProperties/schema";
@@ -9,6 +12,9 @@ const EditProperty: React.FC = () => {
   const params = useParams();
   const { data: property, isLoading } = usePropertieId(params?.id || "");
   const { mutateAsync: uploadImage } = useUploadImages();
+  const { mutateAsync: patchPropertyImages } = usePatchPropertyImages(
+    params?.id || ""
+  );
 
   const onSubmit = async (values: FormValues) => {
     const fileInput =
@@ -24,12 +30,13 @@ const EditProperty: React.FC = () => {
 
     try {
       const urls = await uploadImage(fileArray);
+      await patchPropertyImages(urls);
       console.log("✅ Imagem enviada com sucesso:", urls);
     } catch (error) {
       console.error("❌ Erro ao enviar imagem:", error);
     }
   };
-  // se tiver o id no params mandar um patch se nao tiver o id e um novo imovel mandar um post
+
   if (isLoading) {
     return <Loader />;
   }

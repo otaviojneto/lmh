@@ -29,3 +29,16 @@ export const properties = {
     return response.data;
   },
 };
+
+export const propertyImage = {
+  postPropertyImages: async (
+    id: string,
+    images: string[]
+  ): Promise<PostPropertyResponse> => {
+    const response = await api.post<PostPropertyResponse>(
+      `properties/${id}/images`,
+      { images }
+    );
+    return response.data;
+  },
+};
