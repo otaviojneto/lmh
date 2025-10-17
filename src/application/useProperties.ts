@@ -1,6 +1,6 @@
 import { FormValues } from "@/components/FormProperties/schema";
 import { properties, propertyImage } from "@/services/properties/properties";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useProperties = () => {
   return useQuery({
@@ -29,8 +29,23 @@ export const usePatchProperty = (id: string) => {
   });
 };
 
-export const usePatchPropertyImages = (id: string) => {
-  return useMutation<{ id: string; message: string }, unknown, string[]>({
-    mutationFn: (images) => propertyImage.postPropertyImages(id, images),
+export const useDeleteProperty = () => {
+  const queryClient = useQueryClient();
+  return useMutation<{ message: string }, unknown, string>({
+    mutationFn: (id) => properties.deleteProperty(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["properties"] });
+    },
+  });
+};
+
+export const usePostPropertyImages = () => {
+  return useMutation<
+    { id: string; message: string },
+    unknown,
+    { id: string; images: string[] }
+  >({
+    mutationFn: ({ id, images }) =>
+      propertyImage.postPropertyImages(id, images),
   });
 };

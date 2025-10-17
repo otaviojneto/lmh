@@ -33,3 +33,7 @@ export type PostPropertyResponse = {
   id: string;
   message: string;
 };
+
+export type DeletePropertyResponse = {
+  message: string;
+};

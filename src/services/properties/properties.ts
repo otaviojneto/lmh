@@ -1,6 +1,11 @@
 import { FormValues } from "@/components/FormProperties/schema";
 import { api } from "@/services/api";
-import { PostPropertyResponse, Properties, PropertiesList } from "./types";
+import {
+  DeletePropertyResponse,
+  PostPropertyResponse,
+  Properties,
+  PropertiesList,
+} from "./types";
 
 export const properties = {
   getProperties: async (): Promise<PropertiesList> => {
@@ -26,6 +31,11 @@ export const properties = {
       `properties/${id}`,
       data
     );
+    return response.data;
+  },
+
+  deleteProperty: async (id: string): Promise<DeletePropertyResponse> => {
+    const response = await api.delete<PostPropertyResponse>(`properties/${id}`);
     return response.data;
   },
 };

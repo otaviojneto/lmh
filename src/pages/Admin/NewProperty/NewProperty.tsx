@@ -1,4 +1,8 @@
-import { usePostProperty } from "@/application/useProperties";
+import {
+  usePostProperty,
+  usePostPropertyImages,
+} from "@/application/useProperties";
+import { useUploadImages } from "@/application/useSupaUploaderImg";
 import FormProperties from "@/components/FormProperties/FormProperties";
 import { FormValues } from "@/components/FormProperties/schema";
 import { CheckCircle2, X } from "lucide-react";
@@ -8,9 +12,14 @@ import { toast } from "sonner";
 const NewProperty: React.FC = () => {
   const { mutateAsync: createProperty, isPending } = usePostProperty();
   const navigate = useNavigate();
+  const { mutateAsync: uploadImage } = useUploadImages();
+  const { mutateAsync: postPropertyImages } = usePostPropertyImages();
 
   const onSubmit = async (values: FormValues) => {
     console.log(values);
+    const fileInput =
+      document.querySelector<HTMLInputElement>('input[type="file"]');
+    const files = fileInput?.files;
     try {
       const response = await createProperty({
         title_property: values.title_property,
@@ -29,10 +38,15 @@ const NewProperty: React.FC = () => {
         iptu: values.iptu,
         type_propertie: values.type_propertie,
       });
+      if (files && files.length > 0) {
+        const fileArray = Array.from(files);
+        const urls = await uploadImage(fileArray);
+        await postPropertyImages({ id: response.id, images: urls });
+      }
 
       toast.custom(() => (
         <div className="flex items-center gap-3 bg-green-100 text-green-800 p-3 rounded-xl shadow">
-          <CheckCircle2 className="w-5 h-5 text-green-600" />
+          <CheckCircle2 className="w-5 h-5 text-green-800" />
           <span className="font-semibold text-sm">{response.message}</span>
         </div>
       ));

@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 
 export type CardInfoCompleteProps = {
   property: Properties;
-  // property: PropertyInfo;
   handleEditProperty: () => void;
   onDelete: (id: string) => void;
   isDeleting?: boolean;
@@ -19,7 +18,7 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
   property,
   isDeleting,
   handleEditProperty,
-  // onDelete,
+  onDelete,
 }) => {
   const {
     area,
@@ -38,6 +37,11 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
   } = property;
   const [openModal, setOpenModal] = React.useState(false);
   console.log(property);
+
+  const handleDelete = () => {
+    onDelete(property.id);
+    setOpenModal(false);
+  };
 
   return (
     <S.CardInfoCompleteContainer>
@@ -114,8 +118,9 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
         <ModalInfo width={400} onClose={() => setOpenModal(false)}>
           <S.Info>Você deseja deletar este imóvel?</S.Info>
           <S.StyleButton>
-            {/* <Button variant="contained" size="small" onClick={handleDelete}> */}
-            <Button variant="default">Sim</Button>
+            <Button variant="default" onClick={handleDelete}>
+              Sim
+            </Button>
             <Button
               variant="outline"
               color="inherit"
