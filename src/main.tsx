@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import { theme } from "./theme";
 import { ThemeProvider } from "styled-components";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export const muiTheme = createTheme({
   palette: {
     primary: {
@@ -14,12 +15,14 @@ export const muiTheme = createTheme({
     },
   },
 });
-
+const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <MuiThemeProvider theme={muiTheme}>
     <ThemeProvider theme={theme}>
       <StrictMode>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </StrictMode>
     </ThemeProvider>
   </MuiThemeProvider>

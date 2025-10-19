@@ -1,31 +1,12 @@
-import { collection, getDocs } from "@firebase/firestore";
+import { usePublicProperties } from "@/application/usePublicProperties";
+import { Properties } from "@/services/properties/types";
 import React, { useEffect, useState } from "react";
-import { Property } from "../../@types";
 import { CardInfo, Modal } from "../../components";
-import { db } from "../../services/firebase";
+import Loader from "@/components/Loader/Loader";
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [property, setProperty] = useState<Property[]>([]);
-  const [selectedPropertie, setSelectedPropertie] = useState<Property>();
-
-  useEffect(() => {
-    const fetchImoveis = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "imoveis"));
-        const imoveisData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Property[];
-
-        setProperty(imoveisData);
-      } catch (error) {
-        console.error("Erro ao buscar imóveis:", error);
-      }
-    };
-
-    fetchImoveis();
-  }, []);
-  console.log(property);
+  const [selectedPropertie, setSelectedPropertie] = useState<Properties>();
+  const { data, isLoading } = usePublicProperties();
 
   useEffect(() => {
     if (openModal) {
@@ -36,32 +17,34 @@ const Rent: React.FC = () => {
     }
   }, [openModal]);
 
-  const formatedPropertie = property.map((propertie) => ({
-    ...propertie,
-  }));
-
-  const handleModal = (formatedPropertie?: Property | undefined) => {
+  const handleModal = (formatedPropertie?: Properties | undefined) => {
     setOpenModal(true);
     setSelectedPropertie(formatedPropertie);
   };
+
+  if (isLoading) {
+    return (
+      <div className="relative min-h-[calc(100dvh-396px)]">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
-    <div className="relative">
-      <div className="container mb-10 relative">
+    <div className="relative min-h-[calc(100dvh-236px)]">
+      <div className="container mb-10 relative ">
         <h1 className="text-center text-xl mb-[30px] font-semibold">Imóveis</h1>
 
         <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
-          {formatedPropertie?.map((propertie, idx) => {
-            const img =
-              typeof propertie.images?.[0] === "object"
-                ? propertie.images?.[0]
-                : propertie.images?.[0];
+          {data?.map((property, idx) => {
+            const img = property?.property_images?.[0]?.url;
             return (
               <CardInfo
                 key={idx}
-                {...propertie}
+                {...property}
                 img={img}
-                value={propertie.value.toString()}
-                onClick={() => handleModal(propertie as Property | undefined)}
+                value={property?.value}
+                onClick={() => handleModal(property as Properties | undefined)}
               />
             );
           })}

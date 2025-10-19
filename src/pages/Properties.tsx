@@ -5,7 +5,6 @@ const Properties: React.FC = () => {
   return (
     <section className="pt-[100px]">
       <Rent />
-      {/* TODO trocar o modal de styled-components para tailwind */}
     </section>
   );
 };

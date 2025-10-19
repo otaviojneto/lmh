@@ -11,6 +11,7 @@ import {
 export type AccessLoginProps = {
   logo: string;
   username?: string;
+  disabled?: boolean;
   password?: string;
   handleSubmit?: (e: React.FormEvent) => void;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,6 +24,7 @@ const AccessLogin: React.FC<AccessLoginProps> = ({
   username,
   password,
   errorsPassword,
+  disabled,
   errorsUsername,
   handleSubmit,
   handleChange,
@@ -84,11 +86,18 @@ const AccessLogin: React.FC<AccessLoginProps> = ({
           {errorsPassword && <FormHelperText>Senha inválida</FormHelperText>}
         </FormControl>
         <S.StyleButton>
+          {/* <button
+            onClick={() => signup.mutate({ email, password })}
+            disabled={signup.isPending}
+          >
+            Criar conta
+          </button> */}
           <S.Button
             disableRipple
             size="small"
             variant="contained"
             type="submit"
+            disabled={disabled}
           >
             Iniciar Sessão
           </S.Button>
