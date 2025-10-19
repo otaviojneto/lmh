@@ -13,7 +13,7 @@ const Nav: React.FC = () => {
   const logout = () => {
     Cookies.remove("token");
     Cookies.remove("anonymousClient");
-    navigate("/");
+    navigate("/admin");
   };
 
   return (

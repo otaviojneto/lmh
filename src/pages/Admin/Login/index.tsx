@@ -90,6 +90,9 @@ const Login: React.FC = () => {
           placeholder="senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleLogin({ email, password });
+          }}
         />
         {errorMessage && (
           <p className="text-red-500 text-xs font-medium text-start w-full">

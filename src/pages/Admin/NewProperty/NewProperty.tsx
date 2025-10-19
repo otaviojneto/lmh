@@ -12,8 +12,11 @@ import { toast } from "sonner";
 const NewProperty: React.FC = () => {
   const { mutateAsync: createProperty, isPending } = usePostProperty();
   const navigate = useNavigate();
-  const { mutateAsync: uploadImage } = useUploadImages();
-  const { mutateAsync: postPropertyImages } = usePostPropertyImages();
+  const { mutateAsync: uploadImage, isPending: loadingUploadImg } =
+    useUploadImages();
+  const { mutateAsync: postPropertyImages, isPending: loadingPropertyImg } =
+    usePostPropertyImages();
+  const loading = isPending || loadingUploadImg || loadingPropertyImg;
 
   const onSubmit = async (values: FormValues) => {
     console.log(values);
@@ -63,6 +66,6 @@ const NewProperty: React.FC = () => {
     }
   };
 
-  return <FormProperties onSubmit={onSubmit} isPending={isPending} />;
+  return <FormProperties onSubmit={onSubmit} isPending={loading} />;
 };
 export default NewProperty;

@@ -2,13 +2,13 @@ import { useDeleteProperty, useProperties } from "@/application/useProperties";
 import Loader from "@/components/Loader/Loader";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Property } from "../../../@types/Propety";
 import { CardInfoComplete } from "../../../components/Admin";
 import { toast } from "sonner";
 import { CheckCircle2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Properties } from "@/services/properties/types";
 
-export type PropertyProps = Property & {
+export type PropertyProps = Properties & {
   id: string;
 };
 const PropertyList: React.FC = () => {

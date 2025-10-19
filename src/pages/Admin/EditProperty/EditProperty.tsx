@@ -15,10 +15,12 @@ const EditProperty: React.FC = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { data: property, isLoading } = usePropertieId(params?.id || "");
-  const { mutateAsync: uploadImage } = useUploadImages();
-  const { mutateAsync: patchPropertyImages } = usePostPropertyImages();
-  const { mutateAsync: patchProperty } = usePatchProperty(params?.id || "");
-
+  const { mutateAsync: uploadImage, isPending } = useUploadImages();
+  const { mutateAsync: patchPropertyImages, isPending: loadingUploadImg } =
+    usePostPropertyImages();
+  const { mutateAsync: patchProperty, isPending: loadingProperty } =
+    usePatchProperty(params?.id || "");
+  const loading = isPending || loadingUploadImg || loadingProperty;
   const onSubmit = async (values: FormValues) => {
     const fileInput =
       document.querySelector<HTMLInputElement>('input[type="file"]');
@@ -70,6 +72,12 @@ const EditProperty: React.FC = () => {
     return <Loader />;
   }
 
-  return <FormProperties onSubmit={onSubmit} property={property} />;
+  return (
+    <FormProperties
+      onSubmit={onSubmit}
+      property={property}
+      isPending={loading}
+    />
+  );
 };
 export default EditProperty;
