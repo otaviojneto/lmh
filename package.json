@@ -15,7 +15,6 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@firebase/firestore": "^4.7.9",
     "@fontsource/manrope": "^5.2.5",
     "@fontsource/nunito": "^5.2.5",
     "@hookform/resolvers": "^5.2.2",
@@ -30,7 +29,6 @@
     "add": "^2.0.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "firebase": "^11.4.0",
     "init": "^0.1.2",
     "js-cookie": "^3.0.5",
     "lightningcss": "^1.30.1",

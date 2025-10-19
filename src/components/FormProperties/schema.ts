@@ -11,6 +11,7 @@ export const formSchema = z.object({
   area: z.string().optional(),
   value: z.string().min(1, "Campo obrigatório"),
   complementary_value_text: z.string().optional(),
+  garage: z.string().optional(),
   sale_or_rent: z.string().optional(),
   has_garage: z.string().optional(),
   condominium: z.string().optional(),

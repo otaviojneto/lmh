@@ -53,10 +53,11 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
       suites: property?.suites?.toString() || "",
       area: property?.area?.toString() || "",
       value: property?.value?.toString() || "",
+      garage: property?.garage || "",
       complementary_value_text: property?.complementary_value_text || "",
       condominium: property?.condominium?.toString() || "",
       iptu: property?.iptu?.toString() || "",
-      type_propertie: property?.type_propertie || "",
+      type_propertie: property?.type_propertie || "Casa",
       has_garage: property?.has_garage || "no",
       sale_or_rent: property?.sale_or_rent || "rent",
       property_images: property?.property_images || [{ id: "", url: "" }],
@@ -319,29 +320,75 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                 )}
               />
             </div>
-
-            <FormField
-              control={form.control}
-              name="sale_or_rent"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Tipo de Propriedade
-                  </FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
+            {form.watch("has_garage") === "yes" && (
+              <FormField
+                control={form.control}
+                name="garage"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">
+                      Descrição garagem
+                    </FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecione" />
-                      </SelectTrigger>
+                      <Textarea
+                        placeholder="Descrição detalhada..."
+                        {...field}
+                      />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="rent">Aluguel</SelectItem>
-                      <SelectItem value="sale">Venda</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>
-              )}
-            />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+            <div className="grid grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="sale_or_rent"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">
+                      Venda/Aluguel
+                    </FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="rent">Aluguel</SelectItem>
+                        <SelectItem value="sale">Venda</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="type_propertie"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">
+                      Tipo de Propriedade
+                    </FormLabel>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Casa">Casa</SelectItem>
+                        <SelectItem value="Apartamento">Apartamento</SelectItem>
+                        <SelectItem value="Terreno">Terreno</SelectItem>
+                        <SelectItem value="Lote">Lote</SelectItem>
+                        <SelectItem value="Chácara">Chácara</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <FormField
               control={form.control}

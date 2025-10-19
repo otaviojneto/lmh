@@ -41,6 +41,7 @@ const EditProperty: React.FC = () => {
         condominium: values.condominium,
         iptu: values.iptu,
         type_propertie: values.type_propertie,
+        garage: values.garage,
       });
 
       if (files && files.length > 0) {
