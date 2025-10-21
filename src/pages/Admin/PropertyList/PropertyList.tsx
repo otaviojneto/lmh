@@ -49,12 +49,12 @@ const PropertyList: React.FC = () => {
           {dataProperty?.map((item) => {
             return (
               <CardInfoComplete
-                onDelete={() => handleDeleteProperty(item.id)}
+                onDelete={() => handleDeleteProperty(item.id as string)}
                 handleEditProperty={() =>
                   navigate(`/admin/edit-property/${item.id}`)
                 }
                 key={item.id}
-                isDeleting={deletingIds.includes(item.id)}
+                isDeleting={deletingIds.includes(item.id as string)}
                 property={item}
               />
             );

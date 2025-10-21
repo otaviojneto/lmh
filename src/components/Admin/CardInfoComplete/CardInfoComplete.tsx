@@ -39,7 +39,7 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
   console.log(property);
 
   const handleDelete = () => {
-    onDelete(property.id);
+    onDelete(property.id as string);
     setOpenModal(false);
   };
 

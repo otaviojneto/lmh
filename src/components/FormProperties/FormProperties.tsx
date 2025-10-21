@@ -127,7 +127,11 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                 <FormItem>
                   <FormLabel className="font-semibold">Descrição</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Descrição detalhada..." {...field} />
+                    <Textarea
+                      rows={10}
+                      placeholder="Descrição detalhada..."
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -189,6 +193,7 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -243,6 +248,7 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -380,6 +386,7 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                       <SelectContent>
                         <SelectItem value="Casa">Casa</SelectItem>
                         <SelectItem value="Apartamento">Apartamento</SelectItem>
+                        <SelectItem value="Chalé">Chalé</SelectItem>
                         <SelectItem value="Terreno">Terreno</SelectItem>
                         <SelectItem value="Lote">Lote</SelectItem>
                         <SelectItem value="Chácara">Chácara</SelectItem>

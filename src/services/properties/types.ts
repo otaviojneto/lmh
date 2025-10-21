@@ -1,12 +1,12 @@
 export type PropertiesList = Properties[];
 
 export interface Properties {
-  id: string;
-  user_id: string;
+  id?: string;
+  user_id?: string;
   description: string;
   area: number;
   number_rooms: number;
-  price: number;
+  price?: number;
   address: string;
   type_propertie: string;
   iptu: number;
@@ -20,8 +20,8 @@ export interface Properties {
   sale_or_rent: string;
   title_property?: string;
   complementary_value_text?: string;
-  created_at: string;
-  property_images: PropertyImage[];
+  created_at?: string;
+  property_images?: PropertyImage[];
 }
 
 export interface PropertyImage {

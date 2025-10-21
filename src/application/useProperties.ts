@@ -1,5 +1,5 @@
-import { FormValues } from "@/components/FormProperties/schema";
 import { properties, propertyImage } from "@/services/properties/properties";
+import { Properties } from "@/services/properties/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useProperties = () => {
@@ -18,13 +18,13 @@ export const usePropertieId = (id: string) => {
 };
 
 export const usePostProperty = () => {
-  return useMutation<{ id: string; message: string }, unknown, FormValues>({
+  return useMutation<{ id: string; message: string }, unknown, Properties>({
     mutationFn: (data) => properties.postProperty(data),
   });
 };
 
 export const usePatchProperty = (id: string) => {
-  return useMutation<{ id: string; message: string }, unknown, FormValues>({
+  return useMutation<{ id: string; message: string }, unknown, Properties>({
     mutationFn: (data) => properties.patchProperty(id, data),
   });
 };

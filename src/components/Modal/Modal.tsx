@@ -11,6 +11,7 @@ export type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
+  const saleOrRent = propertie?.sale_or_rent === "sale" ? "Venda" : "Aluguel";
   return (
     <S.ModalContainer>
       <S.Container>
@@ -31,11 +32,15 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
 
           <S.Infos>
             <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
-              {propertie?.title_property}
+              {saleOrRent}: {propertie?.title_property}
             </h1>
             <S.Description>
               <S.Text>Descrição:</S.Text>
               <S.TextDescription>{propertie?.description}</S.TextDescription>
+            </S.Description>
+            <S.Description>
+              <S.Text>Suites:</S.Text>
+              <S.TextDescription>{propertie?.suites}</S.TextDescription>
             </S.Description>
             <S.Description>
               <S.Text>Quartos:</S.Text>

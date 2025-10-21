@@ -14,11 +14,14 @@ const CardInfo: React.FC<CardInfoProps> = ({
   area,
   number_rooms,
   type_propertie,
+  title_property,
+  sale_or_rent,
   has_garage,
   value,
   neighborhood,
   city,
 }) => {
+  const saleOrRent = sale_or_rent === "sale" ? "VENDA" : "ALUGUEL";
   return (
     <div className="shadow-[rgba(50,50,93,0.25)_0px_50px_100px_-20px,rgba(0,0,0,0.3)_0px_30px_60px_-30px,rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset] w-full">
       <button
@@ -33,7 +36,12 @@ const CardInfo: React.FC<CardInfoProps> = ({
 
         <div className="p-2">
           <div className="grid gap-0.5 p-1 min-h-[100px]">
-            <h2 className="text-sm font-bold min-h-12">{type_propertie}</h2>
+            <div>
+              <h2 className="text-sm font-bold">{saleOrRent}</h2>
+              <h2 className="text-sm font-semibold min-h-12">
+                {type_propertie}: {title_property}
+              </h2>
+            </div>
 
             <>
               {neighborhood}, {city}
