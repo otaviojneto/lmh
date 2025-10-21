@@ -7,7 +7,7 @@ const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedPropertie, setSelectedPropertie] = useState<Properties>();
   const { data, isLoading } = usePublicProperties();
-
+  const properties = Array.isArray(data) ? data : [];
   useEffect(() => {
     if (openModal) {
       document.body.style.overflow = "hidden";
@@ -36,7 +36,7 @@ const Rent: React.FC = () => {
         <h1 className="text-center text-xl mb-[30px] font-semibold">Imóveis</h1>
 
         <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
-          {data?.map((property, idx) => {
+          {properties?.map((property, idx) => {
             const img = property?.property_images?.[0]?.url;
             return (
               <CardInfo
