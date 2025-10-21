@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="block md:hidden flex flex-col items-center gap-10 bg-white overflow-hidden -top-px w-full pt-[75px]">
+      <div className=" md:hidden flex flex-col items-center gap-10 bg-white overflow-hidden -top-px w-full pt-[75px]">
         <img className="h-[200px] md:h-[350px]" src={brand} alt="" />
         <h2 className=" font-bold text-lg text-black text-center">
           Escritório especializado em consultoria jurídica e imobiliária.

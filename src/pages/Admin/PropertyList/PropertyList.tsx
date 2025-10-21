@@ -1,71 +1,79 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { useDeleteProperty, useProperties } from "@/application/useProperties";
+import Loader from "@/components/Loader/Loader";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Property } from "../../../@types/Propety";
 import { CardInfoComplete } from "../../../components/Admin";
+import { toast } from "sonner";
+import { CheckCircle2, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Properties } from "@/services/properties/types";
 
-import { db } from "../../../services/firebase";
-import * as S from "./styles";
-import loading from "../../../icons/loading.gif";
-import Title from "../../../components/Admin/Title";
-
-export type PropertyProps = Property & {
+export type PropertyProps = Properties & {
   id: string;
 };
 const PropertyList: React.FC = () => {
-  const [property, setProperty] = useState<PropertyProps[]>([]);
   const [deletingIds, setDeletingIds] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchImoveis = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "imoveis"));
-        const imoveisData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Property[];
-
-        setProperty(imoveisData);
-      } catch (error) {
-        console.error("Erro ao buscar imóveis:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchImoveis();
-  }, []);
+  const { data: dataProperty, isLoading } = useProperties();
+  const { mutateAsync: deleteProperty } = useDeleteProperty();
+  console.log(dataProperty);
 
   const handleDeleteProperty = (id: string) => {
     setDeletingIds((prev) => [...prev, id]);
-    setProperty((prev) => prev.filter((item) => item.id !== id));
+    deleteProperty(id, {
+      onSuccess: (response) => {
+        toast.custom(() => (
+          <div className="flex items-center gap-3 bg-green-100 text-green-800 p-3 rounded-xl shadow">
+            <CheckCircle2 className="w-5 h-5 text-green-800" />
+            <span className="font-semibold text-sm">{response.message}</span>
+          </div>
+        ));
+      },
+      onError: () => {
+        toast.custom(() => (
+          <div className="flex items-center gap-3 bg-red-100 text-red-800 p-3 rounded-xl shadow">
+            <X className="w-5 h-5 text-red-600" />
+            <span className="font-semibold">Erro ao criar imóvel</span>
+          </div>
+        ));
+      },
+    });
   };
 
-  if (isLoading)
-    return (
-      <S.Loading>
-        <img src={loading} alt="Loading..." />
-      </S.Loading>
-    );
+  if (isLoading) return <Loader />;
   return (
-    <S.PropertyListContainer>
-      <Title size="22px" description="Lista de Imóveis" />
-      {property.map((item) => {
-        return (
-          <CardInfoComplete
-            onDelete={() => handleDeleteProperty(item.id)}
-            handleEditProperty={() =>
-              navigate(`/admin/edit-property/${item.id}`)
-            }
-            key={item.id}
-            isDeleting={deletingIds.includes(item.id)}
-            property={item}
-          />
-        );
-      })}
-    </S.PropertyListContainer>
+    <section className="flex flex-col gap-6 max-w-7xl">
+      <h1 className="text-2xl font-semibold">Lista de Imóveis</h1>
+      {Number(dataProperty?.length) > 0 ? (
+        <>
+          {dataProperty?.map((item) => {
+            return (
+              <CardInfoComplete
+                onDelete={() => handleDeleteProperty(item.id as string)}
+                handleEditProperty={() =>
+                  navigate(`/admin/edit-property/${item.id}`)
+                }
+                key={item.id}
+                isDeleting={deletingIds.includes(item.id as string)}
+                property={item}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <div className="text-center mt-36 ">
+          <p className="text-3xl text-gray-700">Nenhum imóvel cadastrado.</p>
+
+          <Button
+            variant="outline"
+            className="mt-6"
+            onClick={() => navigate("/admin/new-property")}
+          >
+            Cadastrar imóvel
+          </Button>
+        </div>
+      )}
+    </section>
   );
 };
 
