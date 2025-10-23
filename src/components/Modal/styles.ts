@@ -7,46 +7,6 @@ export const Button = styled.button`
   }
 `;
 
-export const ModalContainer = styled.div`
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100vh;
-  margin-top: 240px;
-  position: absolute;
-  top: -4px;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-`;
-
-export const Container = styled.div`
-  background-color: ${theme.colors.ice};
-  border-radius: 8px;
-  height: 90%;
-  margin: 10px auto;
-  padding: 14px;
-  overflow-y: auto;
-  width: 1000px;
-
-  @media (max-width: 765px) {
-    height: 100%;
-    margin: auto;
-    width: 100%;
-  }
-`;
-
-export const Header = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-export const Close = styled.img`
-  cursor: pointer;
-  height: 24px;
-  width: 24px;
-`;
-
-export const Content = styled.div``;
-
 export const Rooms = styled.div`
   padding: 0 20px 20px;
 

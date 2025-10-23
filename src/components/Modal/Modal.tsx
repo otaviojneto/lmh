@@ -1,25 +1,32 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
-import { IcClose } from "../../icons";
 import SwiperReact from "../SwiperReact";
 import * as S from "./styles";
 import { Properties } from "@/services/properties/types";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export type ModalProps = {
   propertie?: Properties;
   closeModal?: () => void;
+  open: boolean;
 };
 
-const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
+const Modal: React.FC<ModalProps> = ({ open, propertie, closeModal }) => {
   const saleOrRent = propertie?.sale_or_rent === "sale" ? "Venda" : "Aluguel";
   return (
-    <S.ModalContainer>
-      <S.Container>
-        <S.Header>
-          <S.Close src={IcClose} alt="close" onClick={closeModal} />
-        </S.Header>
-        <S.Content>
+    <Dialog open={open} onOpenChange={closeModal}>
+      <DialogContent className="w-full">
+        <DialogHeader className="w-full">
+          <DialogTitle></DialogTitle>
+        </DialogHeader>
+        <DialogDescription className="md:h-[500px] w-full overflow-y-auto">
           <S.Rooms>
             <SwiperReact>
               {propertie?.property_images?.map((img) => (
@@ -70,9 +77,9 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
               <Button variant="outline">Clique aqui</Button>
             </a>
           </div>
-        </S.Content>
-      </S.Container>
-    </S.ModalContainer>
+        </DialogDescription>
+      </DialogContent>
+    </Dialog>
   );
 };
 
