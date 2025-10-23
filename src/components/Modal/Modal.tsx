@@ -4,6 +4,7 @@ import { IcClose } from "../../icons";
 import SwiperReact from "../SwiperReact";
 import * as S from "./styles";
 import { Properties } from "@/services/properties/types";
+import { Button } from "../ui/button";
 
 export type ModalProps = {
   propertie?: Properties;
@@ -18,7 +19,6 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
         <S.Header>
           <S.Close src={IcClose} alt="close" onClick={closeModal} />
         </S.Header>
-
         <S.Content>
           <S.Rooms>
             <SwiperReact>
@@ -29,7 +29,6 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
               ))}
             </SwiperReact>
           </S.Rooms>
-
           <S.Infos>
             <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
               {saleOrRent}: {propertie?.title_property}
@@ -64,6 +63,13 @@ const Modal: React.FC<ModalProps> = ({ propertie, closeModal }) => {
               </S.TextDescription>
             </S.Description>
           </S.Infos>
+
+          <div className="px-5 flex gap-4 items-center">
+            <p className="font-semibold">Contato:</p>
+            <a href="https://api.whatsapp.com/send?phone=13988045152&text=Olá%20Estou%20interessado%20em%20um%20imóvel">
+              <Button variant="outline">Clique aqui</Button>
+            </a>
+          </div>
         </S.Content>
       </S.Container>
     </S.ModalContainer>

@@ -1,5 +1,5 @@
+import { WhatsApp } from "@mui/icons-material";
 import React from "react";
-import { IcWhatsapp } from "../../icons";
 import * as S from "./styles";
 
 const Footer: React.FC = () => {
@@ -14,12 +14,13 @@ const Footer: React.FC = () => {
       </div>
 
       <S.WhatsBase>
-        <a href="https://api.whatsapp.com/send?phone=13988045152&text=Olá%20Estou%20interessado%20em%20um%20imóvel">
+        <a
+          className="flex flex-col items-center"
+          href="https://api.whatsapp.com/send?phone=13988626005&text=Olá%20Estou%20interessado%20em%20um%20imóvel"
+        >
           <S.Contact>CONTATO</S.Contact>
           <S.Whats>
-            <img src={IcWhatsapp} alt="Whatsapp" />
-
-            <S.Text>(13)98804-5152</S.Text>
+            <WhatsApp />
           </S.Whats>
         </a>
       </S.WhatsBase>

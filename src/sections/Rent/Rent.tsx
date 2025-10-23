@@ -34,7 +34,12 @@ const Rent: React.FC = () => {
     <div className="relative min-h-[calc(100dvh-236px)]">
       <div className="container mb-10 relative ">
         <h1 className="text-center text-xl mb-[30px] font-semibold">Imóveis</h1>
-
+        <h1>
+          Corretora parceira: <strong>Amélia matsumoto</strong>{" "}
+        </h1>
+        <h1>
+          Creci: <strong>21354</strong>
+        </h1>
         <div className="grid grid-cols-4 max-[768px]:grid-cols-1 gap-3 justify-center max-[1200px]:gap-10">
           {properties?.map((property, idx) => {
             const img = property?.property_images?.[0]?.url;
