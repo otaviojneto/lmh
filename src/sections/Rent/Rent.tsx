@@ -1,8 +1,9 @@
 import { usePublicProperties } from "@/application/usePublicProperties";
+import Loader from "@/components/Loader/Loader";
 import { Properties } from "@/services/properties/types";
 import React, { useEffect, useState } from "react";
 import { CardInfo, Modal } from "../../components";
-import Loader from "@/components/Loader/Loader";
+
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedPropertie, setSelectedPropertie] = useState<Properties>();
@@ -55,12 +56,12 @@ const Rent: React.FC = () => {
           })}
         </div>
       </div>
-      {openModal && (
-        <Modal
-          propertie={selectedPropertie}
-          closeModal={() => setOpenModal(false)}
-        />
-      )}
+
+      <Modal
+        open={openModal}
+        propertie={selectedPropertie}
+        closeModal={() => setOpenModal(false)}
+      />
     </div>
   );
 };
