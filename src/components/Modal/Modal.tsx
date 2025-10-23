@@ -1,9 +1,8 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import SwiperReact from "../SwiperReact";
-import * as S from "./styles";
 import { Properties } from "@/services/properties/types";
-import { Button } from "../ui/button";
+
 import {
   Dialog,
   DialogContent,
@@ -11,6 +10,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Button } from "../ui/button";
 
 export type ModalProps = {
   propertie?: Properties;
@@ -26,50 +26,66 @@ const Modal: React.FC<ModalProps> = ({ open, propertie, closeModal }) => {
         <DialogHeader className="w-full">
           <DialogTitle></DialogTitle>
         </DialogHeader>
-        <DialogDescription className="md:h-[500px] w-full overflow-y-auto">
-          <S.Rooms>
+        <DialogDescription className="h-[500px] w-full overflow-y-auto">
+          <div className="p-5 md:px-5 md:pb-5 md:pt-0">
             <SwiperReact>
               {propertie?.property_images?.map((img) => (
                 <SwiperSlide key={img.id}>
-                  <S.Image src={img?.url} alt="image" />
+                  <img
+                    className="max-w-full object-cover"
+                    src={img?.url}
+                    alt="image"
+                  />
                 </SwiperSlide>
               ))}
             </SwiperReact>
-          </S.Rooms>
-          <S.Infos>
+          </div>
+          <div className="p-5">
             <h1 className="text-center text-xl mb-[30px] font-semibold	md:text-2xl">
               {saleOrRent}: {propertie?.title_property}
             </h1>
-            <S.Description>
-              <S.Text>Descrição:</S.Text>
-              <S.TextDescription>{propertie?.description}</S.TextDescription>
-            </S.Description>
-            <S.Description>
-              <S.Text>Suites:</S.Text>
-              <S.TextDescription>{propertie?.suites}</S.TextDescription>
-            </S.Description>
-            <S.Description>
-              <S.Text>Quartos:</S.Text>
-              <S.TextDescription>{propertie?.number_rooms}</S.TextDescription>
-            </S.Description>
-            <S.Description>
-              <S.Text>Garagem:</S.Text>
-              <S.TextDescription>{propertie?.garage}</S.TextDescription>
-            </S.Description>
-            <S.Description>
-              <S.Text>Localização:</S.Text>
-              <S.TextDescription>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Descrição:
+              </p>
+              <p className="text-[#273240]">{propertie?.description}</p>
+            </div>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Suites:
+              </p>
+              <p className="text-[#273240]">{propertie?.suites}</p>
+            </div>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Quartos:
+              </p>
+              <p className="text-[#273240]">{propertie?.number_rooms}</p>
+            </div>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Garagem:
+              </p>
+              <p className="text-[#273240]">{propertie?.garage}</p>
+            </div>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Localização:
+              </p>
+              <p className="text-[#273240]">
                 {propertie?.address} - {propertie?.city} -{" "}
                 {propertie?.neighborhood}
-              </S.TextDescription>
-            </S.Description>
-            <S.Description>
-              <S.Text>Preço:</S.Text>
-              <S.TextDescription>
+              </p>
+            </div>
+            <div className="flex gap-1">
+              <p className="text-[#273240] font-semibold min-w-[100px]">
+                Preço:
+              </p>
+              <p className="text-[#273240]">
                 {propertie?.value} {propertie?.complementary_value_text}
-              </S.TextDescription>
-            </S.Description>
-          </S.Infos>
+              </p>
+            </div>
+          </div>
 
           <div className="px-5 flex gap-4 items-center">
             <p className="font-semibold">Contato:</p>
