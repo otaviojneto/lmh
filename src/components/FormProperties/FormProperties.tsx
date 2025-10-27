@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import spinner from "../../icons/spinner.svg";
 
@@ -40,6 +40,8 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
   isPending,
 }) => {
   const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -73,15 +75,30 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
   // 🔹 Gera previews das novas imagens
   const handleImagePreview = (files: FileList | null) => {
     if (!files) return;
-    const newPreviews = Array.from(files).map((file) =>
-      URL.createObjectURL(file)
-    );
+    const newFiles = Array.from(files);
+    const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
+    // const newPreviews = Array.from(files).map((file) =>
+    //   URL.createObjectURL(file)
+    // );
     setPreviewImages((prev) => [...prev, ...newPreviews]);
+    setSelectedFiles((prev) => [...prev, ...newFiles]);
   };
 
-  // 🔹 Remove imagem individualmente
   const handleRemoveImage = (index: number) => {
     setPreviewImages((prev) => prev.filter((_, i) => i !== index));
+    setSelectedFiles((prev) => {
+      const newFiles = prev.filter((_, i) => i !== index);
+
+      // 🔹 Atualiza o input manualmente
+      const dataTransfer = new DataTransfer();
+      newFiles.forEach((file) => dataTransfer.items.add(file));
+
+      if (inputRef.current) {
+        inputRef.current.files = dataTransfer.files;
+      }
+
+      return newFiles;
+    });
   };
 
   const { reset } = form;
@@ -104,7 +121,11 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
       <div className="text-center text-2xl font-semibold">Editar Imóvel</div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          onSubmit={form.handleSubmit((data) =>
+            onSubmit({ ...data, selectedFiles })
+          )}
+        >
           <div className="space-y-4">
             <FormField
               control={form.control}

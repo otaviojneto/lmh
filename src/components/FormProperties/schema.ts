@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const formSchema = z.object({
   title_property: z.string().min(1, "Campo obrigatório"),
+  selectedFiles: z.any().optional(),
   description: z.string().min(1, "Campo obrigatório"),
   address: z.string().optional(),
   city: z.string().min(1, "Campo obrigatório"),
