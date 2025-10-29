@@ -21,11 +21,8 @@ const EditProperty: React.FC = () => {
   const { mutateAsync: patchProperty, isPending: loadingProperty } =
     usePatchProperty(params?.id || "");
   const loading = isPending || loadingUploadImg || loadingProperty;
-  const onSubmit = async (values: FormValues) => {
-    const fileInput =
-      document.querySelector<HTMLInputElement>('input[type="file"]');
-    const files = fileInput?.files;
 
+  const onSubmit = async (values: FormValues) => {
     try {
       const data = await patchProperty({
         title_property: values.title_property,
@@ -45,6 +42,8 @@ const EditProperty: React.FC = () => {
         type_propertie: values.type_propertie || "",
         garage: values.garage || "",
       });
+
+      const files = values.selectedFiles as File[] | undefined;
 
       if (files && files.length > 0) {
         const fileArray = Array.from(files);

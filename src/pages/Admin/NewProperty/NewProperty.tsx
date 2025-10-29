@@ -19,10 +19,6 @@ const NewProperty: React.FC = () => {
   const loading = isPending || loadingUploadImg || loadingPropertyImg;
 
   const onSubmit = async (values: FormValues) => {
-    console.log(values);
-    const fileInput =
-      document.querySelector<HTMLInputElement>('input[type="file"]');
-    const files = fileInput?.files;
     try {
       const response = await createProperty({
         title_property: values.title_property,
@@ -42,6 +38,9 @@ const NewProperty: React.FC = () => {
         type_propertie: values.type_propertie || "",
         garage: values.garage || "",
       });
+
+      const files = values.selectedFiles as File[] | undefined;
+
       if (files && files.length > 0) {
         const fileArray = Array.from(files);
         const urls = await uploadImage(fileArray);

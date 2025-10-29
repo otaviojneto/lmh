@@ -31,11 +31,11 @@ const About: React.FC = () => {
           alt="análise de documento"
         />
       </div>
-      <div className="w-full flex justify-end max-w-[1172px]">
+      <div className="w-full flex justify-center max-w-[1172px]">
         <a href="/services" className="mt-4 group">
           <Button
-            variant="link"
-            className="hover:no-underline font-semibold flex items-center gap-1"
+            variant="outline"
+            className="hover:no-underline font-semibold flex items-center gap-1 px-10"
           >
             Saiba mais
             <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />

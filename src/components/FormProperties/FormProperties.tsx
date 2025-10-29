@@ -15,9 +15,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import spinner from "../../icons/spinner.svg";
 
@@ -25,21 +26,32 @@ import { useNavigate } from "react-router-dom";
 
 import { onlyNumbers } from "@/lib/keyboartNumberInput";
 import { Properties } from "@/services/properties/types";
-import { X } from "lucide-react";
+import { CheckCircle2, X } from "lucide-react";
 import { formSchema, FormValues } from "./schema";
+import { useDeletePropertyImages } from "@/application/useProperties";
+import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 
 export type FormPropertiesProps = {
   property?: Properties;
   onSubmit: (data: FormValues) => void;
   isPending?: boolean;
 };
-
 const FormProperties: React.FC<FormPropertiesProps> = ({
   property,
   onSubmit,
   isPending,
 }) => {
+  const { mutateAsync: deleteImgId, isPending: pendingDelete } =
+    useDeletePropertyImages();
   const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [imgSelected, setImgSelected] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const filterSelectedImageToDelete = property?.property_images?.find(
+    (img) => img.url === imgSelected
+  )?.id;
+
   const navigate = useNavigate();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -73,15 +85,30 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
   // 🔹 Gera previews das novas imagens
   const handleImagePreview = (files: FileList | null) => {
     if (!files) return;
-    const newPreviews = Array.from(files).map((file) =>
-      URL.createObjectURL(file)
-    );
+    const newFiles = Array.from(files);
+    const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
+    // const newPreviews = Array.from(files).map((file) =>
+    //   URL.createObjectURL(file)
+    // );
     setPreviewImages((prev) => [...prev, ...newPreviews]);
+    setSelectedFiles((prev) => [...prev, ...newFiles]);
   };
 
-  // 🔹 Remove imagem individualmente
   const handleRemoveImage = (index: number) => {
     setPreviewImages((prev) => prev.filter((_, i) => i !== index));
+    setSelectedFiles((prev) => {
+      const newFiles = prev.filter((_, i) => i !== index);
+
+      // 🔹 Atualiza o input manualmente
+      const dataTransfer = new DataTransfer();
+      newFiles.forEach((file) => dataTransfer.items.add(file));
+
+      if (inputRef.current) {
+        inputRef.current.files = dataTransfer.files;
+      }
+
+      return newFiles;
+    });
   };
 
   const { reset } = form;
@@ -104,7 +131,11 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
       <div className="text-center text-2xl font-semibold">Editar Imóvel</div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          onSubmit={form.handleSubmit((data) =>
+            onSubmit({ ...data, selectedFiles })
+          )}
+        >
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -435,7 +466,14 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
                   />
                   <button
                     type="button"
-                    onClick={() => handleRemoveImage(index)}
+                    onClick={() => {
+                      if (property?.property_images?.length ?? 0 > 0) {
+                        setOpenDialog(true);
+                        setImgSelected(src);
+                      } else {
+                        handleRemoveImage(index);
+                      }
+                    }}
                     className="absolute top-1 right-1 bg-white/80 hover:bg-red-100 rounded-full p-1 opacity-0 group-hover:opacity-100 transition"
                   >
                     <X className="w-4 h-4 text-red-500" />
@@ -464,6 +502,62 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
           </div>
         </form>
       </Form>
+
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent className="w-full">
+          <div className="flex w-full justify-center py-6">
+            <DialogTitle>Você deseja apagar essa imagem?</DialogTitle>
+          </div>
+          <div className="flex gap-6 items-center w-full justify-center">
+            <Button
+              variant="default"
+              className="px-10"
+              onClick={() => setOpenDialog(false)}
+            >
+              Não
+            </Button>
+            <Button
+              variant="outline"
+              className="px-10"
+              disabled={pendingDelete}
+              onClick={() =>
+                deleteImgId(
+                  {
+                    id: filterSelectedImageToDelete as string,
+                    propertyId: property?.id as string,
+                  },
+                  {
+                    onSuccess: (response) => {
+                      toast.custom(() => (
+                        <div className="flex items-center gap-3 bg-green-100 text-green-800 p-3 rounded-xl shadow">
+                          <CheckCircle2 className="w-5 h-5 text-green-800" />
+                          <span className="font-semibold text-sm">
+                            {response.message}
+                          </span>
+                        </div>
+                      ));
+                      setOpenDialog(false);
+                      window.location.reload();
+                    },
+                    onError: () => {
+                      toast.custom(() => (
+                        <div className="flex items-center gap-3 bg-red-100 text-red-800 p-3 rounded-xl shadow">
+                          <X className="w-5 h-5 text-red-600" />
+                          <span className="font-semibold">
+                            Erro ao apagar a Imagem.
+                          </span>
+                        </div>
+                      ));
+                    },
+                  }
+                )
+              }
+            >
+              {pendingDelete ? <img src={spinner} alt="carregando" /> : "Sim"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

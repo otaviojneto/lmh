@@ -3,6 +3,7 @@ import Loader from "@/components/Loader/Loader";
 import { Properties } from "@/services/properties/types";
 import React, { useEffect, useState } from "react";
 import { CardInfo, Modal } from "../../components";
+import FormAdvertise from "../FormAdvertise";
 
 const Rent: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -62,6 +63,7 @@ const Rent: React.FC = () => {
         propertie={selectedPropertie}
         closeModal={() => setOpenModal(false)}
       />
+      <FormAdvertise />
     </div>
   );
 };
