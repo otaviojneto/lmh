@@ -51,3 +51,12 @@ export const propertyImage = {
     return response.data;
   },
 };
+
+export const deleteImageId = {
+  deletePropertyImages: async (id: string): Promise<PostPropertyResponse> => {
+    const response = await api.delete<PostPropertyResponse>(
+      `properties/images/${id}`
+    );
+    return response.data;
+  },
+};

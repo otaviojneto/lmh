@@ -1,4 +1,8 @@
-import { properties, propertyImage } from "@/services/properties/properties";
+import {
+  deleteImageId,
+  properties,
+  propertyImage,
+} from "@/services/properties/properties";
 import { Properties } from "@/services/properties/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -47,5 +51,19 @@ export const usePostPropertyImages = () => {
   >({
     mutationFn: ({ id, images }) =>
       propertyImage.postPropertyImages(id, images),
+  });
+};
+
+export const useDeletePropertyImages = () => {
+  const queryClient = useQueryClient();
+  return useMutation<
+    { id: string; message: string },
+    unknown,
+    { id: string; propertyId: string }
+  >({
+    mutationFn: ({ id }) => deleteImageId.deletePropertyImages(id),
+    onSuccess: (_, { propertyId }) => {
+      queryClient.invalidateQueries({ queryKey: ["propertie", propertyId] });
+    },
   });
 };
