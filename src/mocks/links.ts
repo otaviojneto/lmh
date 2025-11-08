@@ -5,12 +5,12 @@ const Link = [
     link: "/",
     icons: "",
   },
-  {
-    id: 2,
-    name: "Imóveis",
-    link: "/properties",
-    icons: "",
-  },
+  // {
+  //   id: 2,
+  //   name: "Imóveis",
+  //   link: "/properties",
+  //   icons: "",
+  // },
   {
     id: 4,
     name: "Serviços",
