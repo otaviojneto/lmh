@@ -13,10 +13,10 @@ const Hero: React.FC = () => {
           <div className="relative z-10 flex items-center gap-10">
             <img className="h-[350px]" src={brand} alt="" />
             <h2 className="max-w-[430px] font-bold text-lg text-[#c5c5c5]">
-              Escritório especializado em consultoria jurídica e imobiliária.
-              Atuamos na área de locação, compra e venda de imóveis, análise de
-              documentos, confecção de contratos e vistorias e assessoria
-              juridica e imobiliária.
+              Escritório especializado em consultoria jurídica, com foco em
+              orientação para empresas e pessoas físicas, incluindo confecção e
+              revisão de documentos de acordo com as necessidades específicas do
+              cliente, garantindo segurança jurídica.
             </h2>
           </div>
         </div>
@@ -25,10 +25,10 @@ const Hero: React.FC = () => {
       <div className=" md:hidden flex flex-col items-center gap-10 bg-white overflow-hidden -top-px w-full pt-[75px]">
         <img className="h-[200px] md:h-[350px]" src={brand} alt="" />
         <h2 className=" font-bold text-lg text-black text-center">
-          Escritório especializado em consultoria jurídica e imobiliária.
-          Atuamos na área de locação, compra e venda de imóveis, análise de
-          documentos, confecção de contratos e vistorias e assessoria juridica e
-          imobiliária.
+          Escritório especializado em consultoria jurídica, com foco em
+          orientação para empresas e pessoas físicas, incluindo confecção e
+          revisão de documentos de acordo com as necessidades específicas do
+          cliente, garantindo segurança jurídica.
         </h2>
       </div>
     </>
