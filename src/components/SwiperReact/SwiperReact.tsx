@@ -1,9 +1,8 @@
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
-import * as S from "./styles";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 type SwiperReactProps = {
   children: React.ReactNode;
@@ -11,8 +10,8 @@ type SwiperReactProps = {
 
 const SwiperReact: React.FC<SwiperReactProps> = ({ children }) => {
   return (
-    <S.Container>
-      <S.Content>
+    <div className="flex justify-center">
+      <div className="max-w-[400px]">
         <Swiper
           slidesPerView={1}
           modules={[Navigation, Pagination]}
@@ -26,8 +25,8 @@ const SwiperReact: React.FC<SwiperReactProps> = ({ children }) => {
         >
           {children}
         </Swiper>
-      </S.Content>
-    </S.Container>
+      </div>
+    </div>
   );
 };
 export default SwiperReact;
