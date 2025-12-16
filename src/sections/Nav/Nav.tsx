@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Hamburguer } from "../../components";
 import { Links } from "../../mocks";
 import theme from "../../styles";
+import { Brand } from "./components/brand";
 
-import * as S from "./styles";
 
-const Nav: React.FC<S.OpenProps> = () => {
+const Nav: React.FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -41,7 +41,7 @@ const Nav: React.FC<S.OpenProps> = () => {
   return (
     <div className="bg-black py-4 fixed w-full z-50 ">
       <div className="container flex items-center justify-between max-w-[1400px]">
-        <S.Brand href="#" />
+        <Brand href="#" />
 
         <Hamburguer
           color={theme.colors.white}
@@ -49,15 +49,46 @@ const Nav: React.FC<S.OpenProps> = () => {
           isOpen={openMenu}
         />
 
-        <S.Menu $isOpen={openMenu}>
-          <ul>
+        <div
+          className={`
+    absolute right-0 top-[70px] z-[2] bg-black text-center overflow-hidden
+    transition-all duration-500 ease-in-out
+    ${openMenu ? "flex w-full h-[calc(100vh-70px)] justify-center" : "w-0 h-0"}
+    
+    md:static md:flex md:w-auto md:h-10 md:bg-transparent
+  `}
+        >
+          <ul
+            className={`
+      w-full pt-2 transition-all duration-400 ease-in-out
+      md:flex md:w-auto md:pt-0 items-center justify-center
+    `}
+          >
             {Links.map((item) => (
-              <li key={item.id}>
-                <a href={item.link}>{item.name}</a>
+              <li
+                key={item.id}
+                className="w-full py-2 md:py-0"
+              >
+                <a
+                  href={item.link}
+                  className={`
+            block w-full text-white font-bold text-[18px]
+            px-[140px] py-[9px]
+            hover:text-black hover:opacity-80
+
+            md:text-[14px] md:px-[5px] md:py-[5px]
+            md:border-b md:border-transparent
+            md:hover:border-black md:hover:text-gray-400
+            md:transition-all md:duration-400
+          `}
+                >
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
-        </S.Menu>
+        </div>
+
       </div>
     </div>
   );
