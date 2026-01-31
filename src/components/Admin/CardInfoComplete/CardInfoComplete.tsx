@@ -35,13 +35,13 @@ const CardInfoComplete: React.FC<CardInfoCompleteProps> = ({
     title_property,
   } = property;
   const [openModal, setOpenModal] = React.useState(false);
-  console.log(property);
+
 
   const handleDelete = () => {
     onDelete(property.id as string);
     setOpenModal(false);
   };
-  console.log(property);
+
 
   return (
     <div className="rounded flex gap-5 p-5 border">
