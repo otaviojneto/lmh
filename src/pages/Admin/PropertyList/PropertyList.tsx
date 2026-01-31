@@ -16,7 +16,7 @@ const PropertyList: React.FC = () => {
   const navigate = useNavigate();
   const { data: dataProperty, isLoading } = useProperties();
   const { mutateAsync: deleteProperty } = useDeleteProperty();
-  console.log(dataProperty);
+
 
   const handleDeleteProperty = (id: string) => {
     setDeletingIds((prev) => [...prev, id]);

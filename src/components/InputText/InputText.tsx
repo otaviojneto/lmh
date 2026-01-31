@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Label, Struture } from "./styles";
+import { Input } from "../ui/input";
 
 interface InputTextProps {
   labelName: string;
@@ -19,7 +19,11 @@ const InputText: React.FC<InputTextProps> = ({
   onChange,
 }) => {
   return (
-    <Struture>
+
+  
+
+    <div className="p-15 mt-10 w-full">
+      <label className=" block transition-3s text-base">{labelName}</label>
       <Input
         type={type}
         required={required}
@@ -27,9 +31,9 @@ const InputText: React.FC<InputTextProps> = ({
         value={value}
         onChange={onChange}
         placeholder={labelName}
+
       />
-      <Label>{labelName}</Label>
-    </Struture>
+    </div>
   );
 };
 

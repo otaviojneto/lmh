@@ -1,7 +1,6 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 import { InputText } from "../../components";
-import * as S from "./styles";
-import { Button } from "@/components/ui/button";
 
 const FormAdvertise: React.FC = () => {
   return (
@@ -20,14 +19,16 @@ const FormAdvertise: React.FC = () => {
           name="_redirect"
           value="https://lmhconsultoria.com"
         />
+        <div className="flex gap-2 w-full">
         <InputText labelName="Nome" name="name" required />
-        <InputText labelName="Email" name="email" type="email" required />
         <InputText type="tel" labelName="Celular" name="phone" required />
-        <S.ContainerButton>
+        </div>
+        <InputText labelName="Email" name="email" type="email" required />
+        <div className="w-full flex justify-end">
           <Button type="submit" variant="outline">
             Enviar
           </Button>
-        </S.ContainerButton>
+        </div>
       </form>
     </div>
   );

@@ -1,8 +1,9 @@
+import { Switch } from "@/components/ui/switch";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import brand from "../../../assets/brand.png";
-import * as S from "./styles";
+
 
 const Nav: React.FC = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -17,20 +18,18 @@ const Nav: React.FC = () => {
   };
 
   return (
-    <S.ConatinerNav>
-      <div>
-        <S.Brand src={brand} alt="logo" />
+    <nav className="bg-white border-b border-[#aba9a9a8] flex items-center justify-between p-4 w-full">
+      <div className="cursor-pointer">
+        <img className="h-12 w-12 object-contain" src={brand} alt="logo" />
       </div>
 
-      <div>
-        <S.BlackSwitch
-          checked={darkMode}
-          onChange={() => setDarkMode(!darkMode)}
-        />
+      <div className="flex items-center gap-2">
+        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        
 
-        <S.Out onClick={logout}>sair</S.Out>
+        <button onClick={logout}>sair</button>
       </div>
-    </S.ConatinerNav>
+    </nav>
   );
 };
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import AccessLogin from "../../../components/Admin/AccessLogin";
 // import { useNavigate } from "react-router-dom";
 import Logo from "../../../assets/brand.png";
 // import { auth, signInWithEmailAndPassword } from "../../../services/firebase";
@@ -120,15 +119,6 @@ const Login: React.FC = () => {
           </Button>
         </div>
       </div>
-      {/* <AccessLogin
-        logo={Logo}
-        username={values.username}
-        password={values.password}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        errorsPassword={errors.password}
-        errorsUsername={errors.username}
-      /> */}
     </section>
   );
 };
