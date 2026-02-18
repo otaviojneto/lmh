@@ -497,7 +497,7 @@ const FormProperties: React.FC<FormPropertiesProps> = ({
               className="px-10"
               type="submit"
             >
-              {isPending ? <img src={spinner} alt="" /> : "Enviar"}
+              {isPending ? <img src={spinner} alt="" /> : property ? "Atualizar" : "Enviar"}
             </Button>
           </div>
         </form>

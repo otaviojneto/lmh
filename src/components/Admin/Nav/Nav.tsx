@@ -1,14 +1,12 @@
 import { Switch } from "@/components/ui/switch";
 import Cookies from "js-cookie";
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import brand from "../../../assets/brand.png";
+import { useTheme } from "@/providers/ThemeContext";
 
 
 const Nav: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
+const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const logout = () => {
@@ -24,7 +22,7 @@ const Nav: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-2">
-        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        <Switch checked={theme === "dark"} onCheckedChange={() => toggleTheme()} />
         
 
         <button onClick={logout}>sair</button>
@@ -34,3 +32,4 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
