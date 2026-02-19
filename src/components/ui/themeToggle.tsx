@@ -1,7 +1,6 @@
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Moon, Sun } from "lucide-react";
 
 // Definimos o que o componente espera receber
 interface ThemeToggleProps {
