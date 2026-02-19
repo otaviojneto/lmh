@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Nav />
-      <div className="bg-white flex">
+      <div className="bg-white dark:bg-black flex">
         <Menu />
         <div className="p-5 w-full">
           <Outlet />

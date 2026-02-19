@@ -4,7 +4,7 @@ import { background, brand } from "../../assets";
 const Hero: React.FC = () => {
   return (
     <>
-      <div className="hidden md:block relative h-[478px] bg-white overflow-hidden -top-px w-full pt-[75px]">
+      <div className="hidden md:block relative h-[478px]  overflow-hidden -top-px w-full pt-[75px]">
         <div
           className="flex items-center justify-center w-screen relative bg-no-repeat bg-fixed bg-contain"
           style={{ backgroundImage: `url(${background})` }}

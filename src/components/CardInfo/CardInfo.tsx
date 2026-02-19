@@ -2,6 +2,8 @@ import { Properties } from "@/services/properties/types";
 import React from "react";
 import { IcBedroom, IcGarage, IcRuler } from "../../icons";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { useTheme } from "@/providers/ThemeContext";
 
 export type CardInfoProps = Properties & {
   onClick?: () => void;
@@ -22,10 +24,11 @@ const CardInfo: React.FC<CardInfoProps> = ({
   city,
 }) => {
   const saleOrRent = sale_or_rent === "sale" ? "VENDA" : "ALUGUEL";
+  const { theme: themeContext } = useTheme();
   return (
     <div className="shadow-[rgba(50,50,93,0.25)_0px_50px_100px_-20px,rgba(0,0,0,0.3)_0px_30px_60px_-30px,rgba(10,37,64,0.35)_0px_-2px_6px_0px_inset] w-full">
       <button
-        className="bg-white rounded-sm text-left w-full"
+        className={cn(themeContext === "dark" ? "bg-black" : "bg-white", "rounded-sm text-left w-full")}
         type="button"
         onClick={onClick}
       >
@@ -81,7 +84,7 @@ const CardInfo: React.FC<CardInfoProps> = ({
 
         <div className="pt-0 px-2 pb-2.5">
           <Button
-            className="font-semibold text-gray-900 w-full"
+            className="font-semibold text-gray-900 dark:text-white w-full"
             variant="outline"
           >
             Ver Imóvel

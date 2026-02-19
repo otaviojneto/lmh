@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 export type HamburguerProps = {
@@ -24,17 +25,17 @@ const Hamburguer: React.FC<HamburguerProps> = ({
 
       {/* linha do meio (antes ::before) */}
       <span
-        className={`absolute right-0 top-[9px] h-1 transition-all duration-500 ease-in-out ${
+        className={cn('absolute right-0 top-[9px] h-1 transition-all duration-500 ease-in-out',
           isOpen ? 'w-full' : 'w-[17px]'
-        }`}
+        )}
         style={{ backgroundColor: color }}
       />
 
       {/* linha de baixo (antes ::after) */}
       <span
-        className={`absolute right-0 top-[18px] h-1 transition-all duration-500 ease-in-out ${
+        className={cn('absolute right-0 top-[18px] h-1 transition-all duration-500 ease-in-out',
           isOpen ? 'w-full' : 'w-[10px]'
-        }`}
+  )}
         style={{ backgroundColor: color }}
       />
     </button>
