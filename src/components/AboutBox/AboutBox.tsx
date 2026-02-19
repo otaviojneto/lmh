@@ -5,8 +5,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
+import { useTheme } from "@/providers/ThemeContext";
 
 const AboutBox: React.FC = () => {
+  const { theme: themeContext } = useTheme();
   const work = [
     <>
       <strong>Análise da Documentação:</strong> Verificamos todos os documentos
@@ -140,11 +143,11 @@ const AboutBox: React.FC = () => {
             {importanceProfessionalMonitoring.map((item, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`}>
                 <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>
-                  <p>{item.text}</p>
+                <AccordionContent className={cn(themeContext === "dark" ? "bg-black border-t border-gray-800" : "bg-white border-t border-b border-gray-200")}>
+                  <p className={cn(themeContext === "dark" ? "text-white bg-black" : "text-black bg-white")}>{item.text}</p>
 
                   {item.complement?.map((complement, index) => (
-                    <li key={index} className="mt-2 pl-4">
+                    <li key={index} className={cn('mt-2 pl-4 list-none', themeContext === "dark" ? "text-white " : "text-black bg-white")} >
                       {complement}
                     </li>
                   ))}
@@ -164,7 +167,7 @@ const AboutBox: React.FC = () => {
             {documentFraud.map((item, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`}>
                 <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>{item.text}</AccordionContent>
+                <AccordionContent className={cn(themeContext === "dark" ? "text-white bg-black border-t border-gray-800" : "text-black bg-white border-t border-gray-200")}>{item.text}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -182,7 +185,7 @@ const AboutBox: React.FC = () => {
             {irregularDocumentation.map((item, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`}>
                 <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>{item.text}</AccordionContent>
+                <AccordionContent className={cn(themeContext === "dark" ? "text-white bg-black border-t border-gray-800" : "text-black bg-white border-t border-gray-200")}>{item.text}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -201,9 +204,7 @@ const AboutBox: React.FC = () => {
             {abusiveClauses.map((item, idx) => (
               <AccordionItem key={idx} value={`item-${idx}`}>
                 <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>
-                  <p>{item.text}</p>
-                </AccordionContent>
+                <AccordionContent className={cn(themeContext === "dark" ? "text-white bg-black border-t border-gray-800" : "text-black bg-white border-t border-gray-200")}>{item.text}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
