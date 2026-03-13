@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ open, propertie, closeModal }) => {
   const saleOrRent = propertie?.sale_or_rent === "sale" ? "Venda" : "Aluguel";
   return (
     <Dialog open={open} onOpenChange={closeModal}>
-      <DialogContent className="w-full">
+      <DialogContent className="w-full dark:bg-gray-900 bg-white">
         <DialogHeader className="w-full">
           <DialogTitle></DialogTitle>
         </DialogHeader>
@@ -45,52 +45,52 @@ const Modal: React.FC<ModalProps> = ({ open, propertie, closeModal }) => {
               {saleOrRent}: {propertie?.title_property}
             </h1>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Descrição:
               </p>
-              <p className="text-[#273240]">{propertie?.description}</p>
+              <p className="text-[#273240] dark:text-white">{propertie?.description}</p>
             </div>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Suites:
               </p>
-              <p className="text-[#273240]">{propertie?.suites}</p>
+              <p className="text-[#273240] dark:text-white">{propertie?.suites}</p>
             </div>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Quartos:
               </p>
-              <p className="text-[#273240]">{propertie?.number_rooms}</p>
+              <p className="text-[#273240] dark:text-white">{propertie?.number_rooms}</p>
             </div>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Garagem:
               </p>
-              <p className="text-[#273240]">{propertie?.garage}</p>
+              <p className="text-[#273240] dark:text-white">{propertie?.garage}</p>
             </div>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Localização:
               </p>
-              <p className="text-[#273240]">
+              <p className="text-[#273240] dark:text-white">
                 {propertie?.address} - {propertie?.city} -{" "}
                 {propertie?.neighborhood}
               </p>
             </div>
             <div className="flex gap-1">
-              <p className="text-[#273240] font-semibold min-w-[100px]">
+              <p className="text-[#273240] dark:text-white font-semibold min-w-[100px]">
                 Preço:
               </p>
-              <p className="text-[#273240]">
+              <p className="text-[#273240] dark:text-white">
                 {propertie?.value} {propertie?.complementary_value_text}
               </p>
             </div>
           </div>
 
           <div className="px-5 flex gap-4 items-center">
-            <p className="font-semibold">Contato:</p>
+            <p className="font-semibold dark:text-white">Contato:</p>
             <a href="https://api.whatsapp.com/send?phone=13988045152&text=Olá%20Estou%20interessado%20em%20um%20imóvel">
-              <Button variant="outline">Clique aqui</Button>
+              <Button variant="outline" className="dark:text-white">Clique aqui</Button>
             </a>
           </div>
         </DialogDescription>
