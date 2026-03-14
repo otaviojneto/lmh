@@ -6,9 +6,9 @@ import { CardInfoComplete } from "../../../components/Admin";
 import { toast } from "sonner";
 import { CheckCircle2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Properties } from "@/services/properties/types";
+import { Property } from "@/services/properties/types";
 
-export type PropertyProps = Properties & {
+export type PropertyProps = Property & {
   id: string;
 };
 const PropertyList: React.FC = () => {
