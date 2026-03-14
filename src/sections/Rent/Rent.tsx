@@ -1,28 +1,15 @@
 import { usePublicProperties } from "@/application/usePublicProperties";
 import Loader from "@/components/Loader/Loader";
-import { Properties } from "@/services/properties/types";
-import React, { useEffect, useState } from "react";
-import { CardInfo, Modal } from "../../components";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { CardInfo } from "../../components";
 import FormAdvertise from "../FormAdvertise";
 
 const Rent: React.FC = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedPropertie, setSelectedPropertie] = useState<Properties>();
   const { data, isLoading } = usePublicProperties();
+  const navigate = useNavigate();
   const properties = Array.isArray(data) ? data : [];
-  useEffect(() => {
-    if (openModal) {
-      document.body.style.overflow = "hidden";
-      window.scroll(0, 470);
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [openModal]);
 
-  const handleModal = (formatedPropertie?: Properties | undefined) => {
-    setOpenModal(true);
-    setSelectedPropertie(formatedPropertie);
-  };
 
   if (isLoading) {
     return (
@@ -51,18 +38,14 @@ const Rent: React.FC = () => {
                 {...property}
                 img={img}
                 value={property?.value}
-                onClick={() => handleModal(property as Properties | undefined)}
+                onClick={() =>  navigate(`/properties-details/${property?.id}`)}
               />
             );
           })}
         </div>
       </div>
 
-      <Modal
-        open={openModal}
-        propertie={selectedPropertie}
-        closeModal={() => setOpenModal(false)}
-      />
+     
       <FormAdvertise />
     </div>
   );

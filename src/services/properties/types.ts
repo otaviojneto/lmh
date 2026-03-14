@@ -1,6 +1,6 @@
-export type PropertiesList = Properties[];
+export type PropertiesList = Property[];
 
-export interface Properties {
+export interface Property {
   id?: string;
   user_id?: string;
   description: string;

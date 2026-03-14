@@ -7,3 +7,11 @@ export const usePublicProperties = () => {
     queryFn: publicProperties.getPublicProperties,
   });
 };
+
+export const usePublicPropertyById = (id: string) => {
+  return useQuery({
+    queryKey: ["public-property", id],
+    queryFn: () => publicProperties.getPublicPropertyById(id),
+    enabled: !!id,
+  });
+};
