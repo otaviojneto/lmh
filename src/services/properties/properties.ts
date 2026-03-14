@@ -2,7 +2,7 @@ import { api } from "@/services/api";
 import {
   DeletePropertyResponse,
   PostPropertyResponse,
-  Properties,
+  Property,
   PropertiesList,
 } from "./types";
 
@@ -12,19 +12,19 @@ export const properties = {
     return response.data;
   },
 
-  getPropertieId: async (id: string): Promise<Properties> => {
-    const response = await api.get<Properties>(`properties/${id}`);
+  getPropertieId: async (id: string): Promise<Property> => {
+    const response = await api.get<Property>(`properties/${id}`);
     return response.data;
   },
 
-  postProperty: async (data: Properties): Promise<PostPropertyResponse> => {
+  postProperty: async (data: Property): Promise<PostPropertyResponse> => {
     const response = await api.post<PostPropertyResponse>("properties", data);
     return response.data;
   },
 
   patchProperty: async (
     id: string,
-    data: Properties
+    data: Property
   ): Promise<PostPropertyResponse> => {
     const response = await api.patch<PostPropertyResponse>(
       `properties/${id}`,

@@ -9,13 +9,15 @@ import { Login } from "../pages/Admin";
 import PropertyList from "@/pages/Admin/PropertyList";
 import Properties from "@/pages/Properties";
 import EditProperty from "@/pages/Admin/EditProperty/EditProperty";
-import PropertiesDetails from "@/pages/PropertiesDetails";
+import PropertiesDetails from "@/pages/PropertiesDetails/PropertiesDetails";
+
 
 const AppRoutes: React.FC = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/services" element={<Services />} />
     <Route path="/properties" element={<Properties />} />
+    <Route path="properties-details/:id" element={<PropertiesDetails />} />
 
     {/* Redirecionamento raiz */}
     <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
@@ -30,7 +32,6 @@ const AppRoutes: React.FC = () => (
         <Route path="edit-property/:id" element={<EditProperty />} />
         <Route path="property-list" element={<PropertyList />} />
         <Route path="new-property" element={<NewProperty />} />
-        <Route path="properties-details/:id" element={<PropertiesDetails />} />
       </Route>
     </Route>
     {/* Fallback para rotas não encontradas */}

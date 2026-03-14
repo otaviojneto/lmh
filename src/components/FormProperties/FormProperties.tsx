@@ -25,14 +25,14 @@ import spinner from "../../icons/spinner.svg";
 import { useNavigate } from "react-router-dom";
 
 import { onlyNumbers } from "@/lib/keyboartNumberInput";
-import { Properties } from "@/services/properties/types";
+import { Property } from "@/services/properties/types";
 import { CheckCircle2, X } from "lucide-react";
 import { formSchema, FormValues } from "./schema";
 import { useDeletePropertyImages } from "@/application/useProperties";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 
 export type FormPropertiesProps = {
-  property?: Properties;
+  property?: Property;
   onSubmit: (data: FormValues) => void;
   isPending?: boolean;
 };

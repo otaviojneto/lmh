@@ -1,11 +1,11 @@
-import { Properties } from "@/services/properties/types";
+import { Property } from "@/services/properties/types";
 import React from "react";
 import { IcBedroom, IcGarage, IcRuler } from "../../icons";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/ThemeContext";
 
-export type CardInfoProps = Properties & {
+export type CardInfoProps = Property & {
   onClick?: () => void;
   img: string | undefined;
 };

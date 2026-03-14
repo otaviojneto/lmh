@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Properties } from "@/services/properties/types";
+import { Property } from "@/services/properties/types";
 import React from "react";
 import noImage from "../../../assets/noImage.png";
 
 export type CardInfoCompleteProps = {
-  property: Properties;
+  property: Property;
   handleEditProperty: () => void;
   onDelete: (id: string) => void;
   isDeleting?: boolean;
