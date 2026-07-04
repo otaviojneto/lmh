@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       <div className="text-center mt-4 md:mt-0">
         <a
           className="flex flex-col items-center text-white"
-          href="https://api.whatsapp.com/send?phone=13988626005&text=Olá%20Estou%20interessado%20em%20um%20imóvel"
+          href="https://api.whatsapp.com/send?phone=13988045152&text=Olá%20Estou%20interessado%20em%20um%20imóvel"
         >
           <h3 className="font-semibold">CONTATO</h3>
           <div className="flex items-center mt-1">
