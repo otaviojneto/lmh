@@ -1,9 +1,9 @@
 import { usePublicPropertyById } from '@/application/usePublicProperties';
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { PropertyDetails } from './components/PropertyDetails';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 import Loader from '@/components/Loader/Loader';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { PropertyDetails } from './components/PropertyDetails';
 
 
 const PropertiesDetails: React.FC = () => {
