@@ -1,23 +1,24 @@
 import { usePublicPropertyById } from '@/application/usePublicProperties';
-import React from 'react'
+import Loader from '@/components/Loader/Loader';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PropertyDetails } from './components/PropertyDetails';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import Loader from '@/components/Loader/Loader';
+
 
 const PropertiesDetails: React.FC = () => {
   const { id } = useParams();
   const { data, isLoading } = usePublicPropertyById(id || '');
 
+
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Properties', href: '/properties' },
+    { label: 'Todos os imóveis', href: '/properties' },
   ];
 
-  console.log(data);
   if (isLoading) {
-    return <section className='pt-20 min-h-[calc(100dvh-136px)]'><Loader /></section> 
- 
+    return <section className='pt-20 min-h-[calc(100dvh-136px)]'><Loader /></section>
+
   }
   if (!data) {
     return <div className='pt-50 min-h-[calc(100dvh-136px)] flex justify-center'>Propriedade não encontrada</div>;
@@ -35,12 +36,13 @@ const PropertiesDetails: React.FC = () => {
                   <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator key={item.href} />
-                
+
               </React.Fragment>
             ))}
             <BreadcrumbPage>{data?.title_property || ''}</BreadcrumbPage>
           </BreadcrumbList>
         </Breadcrumb>
+
 
         <PropertyDetails property={data} />
       </div>
